@@ -81,7 +81,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     //export
     Route::post('/export',              [ExportController::class, 'store'])->name('export.store');
     Route::put('/export/{id}',          [ExportController::class, 'update'])->name('export.update');
-    Route::delete('/export/{id}',       [ExportController::class, 'destroy'])->name('export.destroy');
+    Route::delete('/export/{id}',       [ExportController::class, 'destroy'])->name('export.delete');
     Route::get('/export/{id}/download', [ExportController::class, 'download'])->name('export.download');
 
 });
