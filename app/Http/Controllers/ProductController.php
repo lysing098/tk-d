@@ -25,8 +25,10 @@ class ProductController extends Controller
             'description' => 'nullable|string',
             'size' => 'required|string',
             'color' => 'required|string',
+            'order' => 'required|unique:tbl_product,order',
             'images' => 'required|array|min:1',
             'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:2048',
+
         ]);
 
         $paths = [];
@@ -39,6 +41,7 @@ class ProductController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'size' => $request->size,
+            'order' => $request->order,
             'color' => json_encode([$request->color]),
             'images' => json_encode($paths),
         ]);
@@ -57,6 +60,7 @@ class ProductController extends Controller
             'title' => 'required|string|max:255',
             'size' => 'required|string',
             'color' => 'required|string',
+            'order' => 'required|unique:tbl_product,order,' .$product->order,
             'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
@@ -76,6 +80,7 @@ class ProductController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'size' => $request->size,
+            'order' => $request->order,
             'color' => json_encode([$request->color]),
             'images' => json_encode($paths),
         ]);

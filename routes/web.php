@@ -11,12 +11,15 @@ use App\Http\Controllers\HeroSectionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
+use App\Models\Certificate;
+use App\Models\Company;
+use App\Models\Faq;
+use App\Models\Herosection;
+use App\Models\Team;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('pages.frontend.Homepage');
-});
 
+// backend
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
 
 
@@ -82,5 +85,51 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+// frontend
+
+Route::get('/', function () {
+    $hero = Herosection::where('page','home')->first();
+
+    $faq = Faq::limit(10)->get();
+
+    // $company = Company::first();
+    return view('pages.frontend.Homepage',compact('hero','faq'));
+});
+
+Route::get('/about-us', function () {
+     $hero = Herosection::where('page','about')->first();
+
+     $teams = Team::latest()->get();
+
+     $certificate = Certificate::orderBy('order')->get();
+
+    return view('pages.frontend.AboutUsPage',compact('hero','teams','certificate'));
+});
+
+Route::get('/our-trading-products', function() {
+    return view('pages.frontend.ProductPage');
+});
+
+Route::get('/export', function() {
+    $hero = Herosection::where('page','home')->first();
+
+    return view('pages.frontend.ExportPage',compact('hero'));
+});
+
+Route::get('/business-activities', function() {
+    $hero = Herosection::where('page','home')->first();
+
+    return view('pages.frontend.ActivityPage',compact('hero'));
+});
+
+Route::get('/blog', function() {
+    $hero = Herosection::where('page','home')->first();
+
+    return view('pages.frontend.BlogPage',compact('hero'));
+});
+
 
 require __DIR__.'/auth.php';

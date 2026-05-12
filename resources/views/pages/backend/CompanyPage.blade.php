@@ -116,154 +116,176 @@
     </div>
 
     <script>
-function companyModal() {
-    return {
-        show: false,
-        loading: false,
-        toast: '',
-        method: 'POST',
-        actionUrl: '',
-        modalTitle: '',
-        errors: {},
-
-        form: {
-            title: '',
-            description: '',
-            email: '',
-            tel: '',
-            location: ''
-        },
-
-        // ================= CREATE =================
-        openCreate() {
-            this.reset();
-            this.method = 'POST';
-            this.actionUrl = '/admin/company';
-            this.modalTitle = 'Create Company';
-            this.show = true;
-        },
-
-        // ================= EDIT =================
-        openEdit(company) {
-            this.reset();
-            this.method = 'PUT';
-            this.actionUrl = `/admin/company/${company.id}`;
-            this.modalTitle = 'Edit Company';
-
-            this.form = {
-                title: company.title ?? '',
-                description: company.description ?? '',
-                email: company.email ?? '',
-                tel: company.tel ?? '',
-                location: company.location ?? '',
-            };
-
-            this.show = true;
-        },
-
-        // ================= RESET =================
-        reset() {
-            this.errors = {};
-            this.form = {
-                title: '',
-                description: '',
-                email: '',
-                tel: '',
-                location: ''
-            };
-        },
-
-        // ================= SUBMIT =================
-        async submitForm() {
-
-            this.errors = {};
-
-            // 🔥 CLIENT VALIDATION (prevents 422 most of the time)
-            if (!this.form.title) this.errors.title = 'Title is required';
-            if (!this.form.email) this.errors.email = 'Email is required';
-            if (!this.form.tel) this.errors.tel = 'Tel is required';
-            if (!this.form.location) this.errors.location = 'Location is required';
-            if (!this.form.description) this.errors.description = 'Description is required';
-
-            if (Object.keys(this.errors).length > 0) return;
-
-            this.loading = true;
-
-            const payload = {
-                title: this.form.title,
-                description: this.form.description,
-                email: this.form.email,
-                tel: this.form.tel,
-                location: this.form.location,
-                _token: document.querySelector('meta[name="csrf-token"]').content,
-                _method: this.method
-            };
-
-            try {
-                const res = await fetch(this.actionUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'X-CSRF-TOKEN': payload._token,
-                    },
-                    body: JSON.stringify(payload),
-                });
-
-                const data = await res.json();
-
-                if (res.ok && data.success) {
-
-                    this.show = false;
-                    this.showToast(data.message || 'Success');
-
-                    setTimeout(() => location.reload(), 800);
-
-                } else if (res.status === 422) {
-
-                    this.errors = data.errors || {};
-
-                } else {
-
-                    alert('Something went wrong');
-
-                }
-
-            } catch (err) {
-                console.error(err);
-                alert('Network error');
-            } finally {
-                this.loading = false;
-            }
-        },
-
-        // ================= DELETE =================
-        async deleteCompany(id) {
-            if (!confirm('Delete this company?')) return;
-
-            const res = await fetch(`/admin/company/${id}`, {
+        function companyModal() {
+            return {
+                show: false,
+                loading: false,
+                toast: '',
                 method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                actionUrl: '',
+                modalTitle: '',
+                errors: {},
+
+                form: {
+                    title: '',
+                    description: '',
+                    email: '',
+                    tel: '',
+                    location: ''
                 },
-                body: new URLSearchParams({ _method: 'DELETE' })
-            });
 
-            const data = await res.json();
+                // ================= CREATE =================
+                openCreate() {
+                    this.reset();
+                    this.method = 'POST';
+                    this.actionUrl = '/admin/company';
+                    this.modalTitle = 'Create Company';
+                    this.show = true;
+                },
 
-            if (data.success) {
-                this.showToast('Deleted successfully');
-                setTimeout(() => location.reload(), 800);
+                // ================= EDIT =================
+                openEdit(company) {
+                    this.reset();
+                    this.method = 'PUT';
+                    this.actionUrl = `/admin/company/${company.id}`;
+                    this.modalTitle = 'Edit Company';
+
+                    this.form = {
+                        title: company.title ?? '',
+                        description: company.description ?? '',
+                        email: company.email ?? '',
+                        tel: company.tel ?? '',
+                        location: company.location ?? '',
+                    };
+
+                    this.show = true;
+                },
+
+                // ================= RESET =================
+                reset() {
+                    this.errors = {};
+                    this.form = {
+                        title: '',
+                        description: '',
+                        email: '',
+                        tel: '',
+                        location: ''
+                    };
+                },
+
+                // ================= SUBMIT =================
+                async submitForm() {
+
+                    this.errors = {};
+
+                    if (!this.form.title) this.errors.title = 'Title is required';
+                    if (!this.form.email) this.errors.email = 'Email is required';
+                    if (!this.form.tel) this.errors.tel = 'Tel is required';
+                    if (!this.form.location) this.errors.location = 'Location is required';
+                    if (!this.form.description) this.errors.description = 'Description is required';
+
+                    if (Object.keys(this.errors).length > 0) return;
+
+                    this.loading = true;
+
+                    const fd = new FormData();
+
+                    fd.append('title', this.form.title);
+                    fd.append('description', this.form.description);
+                    fd.append('email', this.form.email);
+                    fd.append('tel', this.form.tel);
+                    fd.append('location', this.form.location);
+
+                    fd.append('_token',
+                        document.querySelector('meta[name="csrf-token"]').content
+                    );
+
+                    if (this.method === 'PUT') {
+                        fd.append('_method', 'PUT');
+                    }
+
+                    try {
+
+                        const res = await fetch(this.actionUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Accept': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector(
+                                    'meta[name="csrf-token"]'
+                                ).content,
+                            },
+                            body: fd,
+                        });
+
+                        let data = {};
+
+                        try {
+                            data = await res.json();
+                        } catch (e) {
+                            console.error('Invalid JSON response');
+                        }
+
+                        if (res.ok && data.success) {
+
+                            this.show = false;
+
+                            this.showToast(
+                                data.message || 'Saved successfully!'
+                            );
+
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 1000);
+
+                        } else if (res.status === 422) {
+
+                            const fieldErrors = data.errors || {};
+
+                            Object.keys(fieldErrors).forEach(key => {
+                                this.errors[key] = fieldErrors[key][0];
+                            });
+
+                        } else {
+                            alert('Something went wrong.');
+                        }
+
+                    } catch (err) {
+                        console.error(err);
+                        alert('Network error.');
+                    } finally {
+                        this.loading = false;
+                    }
+                },
+
+                // ================= DELETE =================
+                async deleteCompany(id) {
+                    if (!confirm('Delete this company?')) return;
+
+                    const res = await fetch(`/admin/company/${id}`, {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        },
+                        body: new URLSearchParams({
+                            _method: 'DELETE'
+                        })
+                    });
+
+                    const data = await res.json();
+
+                    if (data.success) {
+                        this.showToast('Deleted successfully');
+                        setTimeout(() => location.reload(), 800);
+                    }
+                },
+
+                // ================= TOAST =================
+                showToast(msg) {
+                    this.toast = msg;
+                    setTimeout(() => this.toast = '', 3000);
+                }
             }
-        },
-
-        // ================= TOAST =================
-        showToast(msg) {
-            this.toast = msg;
-            setTimeout(() => this.toast = '', 3000);
         }
-    }
-}
-</script>
+    </script>
 @endsection

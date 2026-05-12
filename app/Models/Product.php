@@ -13,6 +13,7 @@ class Product extends Model
         'size',
         'color',
         'images',
+        'order'
     ];
 
     // Do NOT cast images to array — we manage JSON manually

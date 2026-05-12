@@ -37,7 +37,10 @@ class CompanyController extends Controller
 
         Company::create($validated);
 
-        return redirect()->back()->with('success', 'Company deleted successfully');
+        return response()->json([
+            'success' => true,
+            'message' => 'Company created successfully'
+        ]);
     }
 
     /**
@@ -64,7 +67,10 @@ class CompanyController extends Controller
         $company = Company::findOrFail($id);
         $company->update($validated);
 
-        return redirect()->back()->with('success', 'Company deleted successfully');
+        return response()->json([
+            'success' => true,
+            'message' => 'Company updated successfully'
+        ]);
     }
 
     /**
@@ -74,6 +80,9 @@ class CompanyController extends Controller
     {
         Company::destroy($id);
 
-        return redirect()->back()->with('success', 'Company deleted successfully');
+        return response()->json([
+            'success' => true,
+            'message' => 'Company deleted successfully'
+        ]);
     }
 }

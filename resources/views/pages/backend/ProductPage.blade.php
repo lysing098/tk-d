@@ -53,6 +53,7 @@
                         <th class="text-left py-2">Title</th>
                         <th class="text-left py-2">Size</th>
                         <th class="text-left py-2">Color</th>
+                        <th class="text-left py-2">Order</th>
                         <th class="text-left py-2">Images</th>
                         <th class="text-right py-2">Action</th>
                     </tr>
@@ -67,6 +68,7 @@
                             <td class="py-2">{{ $product->title }}</td>
                             <td class="py-2">{{ $product->size }}</td>
                             <td class="py-2">{{ implode(', ', $colors) }}</td>
+                             <td class="py-2">{{ $product->order }}</td>
                             <td class="py-2">
                                 <div class="flex gap-2 flex-wrap">
                                     @foreach ($images as $img)
@@ -140,6 +142,14 @@
                         <p x-show="errors.color" x-text="errors.color" class="text-red-500 text-xs mt-1"></p>
                     </div>
 
+                    {{-- ORDER --}}
+                    <div class="mb-3">
+                        <label class="font-bold">Order</label>
+                        <input type="text" x-model="form.order" placeholder="Order"
+                            class="w-full border p-2 mt-1 rounded">
+                        <p x-show="errors.order" x-text="errors.order" class="text-red-500 text-xs mt-1"></p>
+                    </div>
+
                     {{-- IMAGE UPLOAD --}}
                     <div class="mb-3">
                         <label class="font-bold">Images</label>
@@ -193,6 +203,7 @@
                     description: '',
                     size: '',
                     color: '',
+                    order: '',
                     images: [], // { file, preview, isExisting, path }
                 },
 
@@ -212,6 +223,7 @@
 
                     this.form.title = product.title || '';
                     this.form.description = product.description || '';
+                    this.form.order = product.order || '';
                     this.form.size = product.size || '';
 
                     // color is stored as JSON array e.g. ["white"]
@@ -241,6 +253,7 @@
                         description: '',
                         size: '',
                         color: '',
+                        order: '',
                         images: []
                     };
                 },
@@ -276,6 +289,9 @@
                     if (!this.form.color) {
                         this.errors.color = 'Color is required.';
                     }
+                    if (!this.form.order) {
+                        this.errors.order = 'Order is required.';
+                    }
 
                     const newImages = this.form.images.filter(i => !i.isExisting);
                     if (this.method === 'POST' && newImages.length === 0) {
@@ -292,6 +308,7 @@
                     fd.append('description', this.form.description || '');
                     fd.append('size', this.form.size);
                     fd.append('color', this.form.color);
+                    fd.append('order', this.form.order);
 
                     newImages.forEach(img => fd.append('images[]', img.file));
 
