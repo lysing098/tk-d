@@ -79,7 +79,10 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::delete('/company/{id}', [CompanyController::class, 'destroy'])->name('company.delete');
 
     //export
-   
+    Route::post('/export',              [ExportController::class, 'store'])->name('export.store');
+    Route::put('/export/{id}',          [ExportController::class, 'update'])->name('export.update');
+    Route::delete('/export/{id}',       [ExportController::class, 'destroy'])->name('export.destroy');
+    Route::get('/export/{id}/download', [ExportController::class, 'download'])->name('export.download');
 
 });
 Route::middleware('auth')->group(function () {
