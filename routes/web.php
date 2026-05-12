@@ -11,6 +11,8 @@ use App\Http\Controllers\HeroSectionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\ExportController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -75,6 +77,9 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::post('/company', [CompanyController::class, 'store'])->name('company.store');
     Route::put('/company/{id}', [CompanyController::class, 'update'])->name('company.update');
     Route::delete('/company/{id}', [CompanyController::class, 'destroy'])->name('company.delete');
+
+    //export
+   
 
 });
 Route::middleware('auth')->group(function () {
