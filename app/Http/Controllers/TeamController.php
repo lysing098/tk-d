@@ -24,7 +24,8 @@ class TeamController extends Controller
         $validated = $request->validate([
             'name'=>'required|string',
             'role'=>'required|string',
-            'image'=>'required|image|mimes:png,jpg,jpeg'
+            'image'=>'required|image|mimes:png,jpg,jpeg',
+            'order'=>'required|integer|unique:tbl_team,order'
         ]);
 
         if ($request->hasFile('image')) {
@@ -55,7 +56,8 @@ class TeamController extends Controller
         $validated = $request->validate([
             'name'=>'required|string',
             'role'=>'required|string',
-            'image'=>'nullable|image|mimes:png,jpg,jpeg'
+            'image'=>'nullable|image|mimes:png,jpg,jpeg',
+            'order'=>'required|integer|unique:tbl_team,order,' .$team->id
         ]);
 
         // update image if new uploaded

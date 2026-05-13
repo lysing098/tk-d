@@ -82,69 +82,80 @@
     </div>
 
     {{-- our target --}}
-    <div class="my-20 bg-[#0B0B54] h-[577px] flex items-center justify-center relative">
+    <div class="my-20 bg-[#0B0B54] min-h-[577px] flex flex-col lg:flex-row items-center justify-center relative px-4 lg:px-0">
 
-        <!-- SECTION TITLE -->
-        <div class="absolute top-0 left-0 w-2/3 md:w-1/3 overflow-hidden">
+    <!-- SECTION TITLE -->
+    <div class="absolute top-0 left-0 w-2/3 md:w-1/3 overflow-hidden">
 
-            <div class="absolute inset-0 bg-[#ED1C24]
-            [clip-path:polygon(0_0,100%_0,90%_100%,0_100%)]">
-            </div>
+        <div class="absolute inset-0 bg-[#ED1C24]
+        [clip-path:polygon(0_0,100%_0,90%_100%,0_100%)]">
+        </div>
 
-            <div class="relative z-10 px-4 md:px-6 py-3 flex justify-start md:justify-center">
-                <h1 class="text-lg md:text-2xl font-bold text-white capitalize">
-                    Our Target Buyers
-                </h1>
-            </div>
+        <div class="relative z-10 px-4 md:px-6 py-3 flex justify-start md:justify-center">
+            <h1 class="text-lg md:text-2xl font-bold text-white capitalize">
+                Our Target Buyers
+            </h1>
+        </div>
+
+    </div>
+
+    <div class="text-white flex flex-col md:flex-row items-center gap-10 w-full max-w-6xl px-5">
+
+        {{-- text --}}
+        <div class="text-center md:text-left">
+
+            <p class="mb-2 text-[22px] md:text-[30px]">We serve:</p>
+
+            <ul class="list-disc pl-5 space-y-1 text-[16px] md:text-[20px] text-left">
+                <li>Importers &amp; Distributors</li>
+                <li>Supermarkets &amp; Retail Chains</li>
+                <li>F&amp;B brands (coffee, bubble tea, restaurants)</li>
+                <li>Eco-friendly product wholesalers</li>
+            </ul>
 
         </div>
 
-        <div class="text-white flex items-center gap-10">
-            {{-- text --}}
-            <div>
-                <p class="mb-2 text-[30px]">We serve:</p>
+        {{-- images --}}
+        <div class="w-full flex justify-center">
 
-                <ul class="list-disc pl-5 space-y-1 text-[20px]">
-                    <li>Importers &amp; Distributors</li>
-                    <li>Supermarkets &amp; Retail Chains</li>
-                    <li>F&amp;B brands (coffee, bubble tea, restaurants)</li>
-                    <li>Eco-friendly product wholesalers</li>
-                </ul>
-            </div>
-            {{-- images --}}
             <div>
+
                 {{-- ROW 1 --}}
                 <div class="grid grid-cols-2 gap-4 max-w-3xl">
 
-                    {{-- TOP LEFT BIG --}}
                     <div>
-                        <img src="{{ asset('images/herosection.jpg') }}" class="w-[268.06px] h-[185.18px] object-cover">
+                        <img src="{{ asset('images/herosection.jpg') }}"
+                             class="w-full max-w-[268px] h-auto object-cover">
                     </div>
 
-                    {{-- TOP RIGHT SMALL --}}
                     <div class="flex items-end">
-                        <img src="{{ asset('images/herosection.jpg') }}" class="w-[188.98px] h-[128px] object-cover">
+                        <img src="{{ asset('images/herosection.jpg') }}"
+                             class="w-full max-w-[188px] h-auto object-cover">
                     </div>
 
                 </div>
 
                 {{-- ROW 2 --}}
-                <div class="grid grid-cols-2 gap-4 max-w-3xl pt-5 -ml-10">
+                <div class="grid grid-cols-2 gap-4 max-w-3xl pt-5">
 
-                    {{-- BOTTOM LEFT SMALL --}}
                     <div class="flex justify-end">
-                        <img src="{{ asset('images/herosection.jpg') }}" class="w-[188.98px] h-[128px] object-cover">
+                        <img src="{{ asset('images/herosection.jpg') }}"
+                             class="w-full max-w-[188px] h-auto object-cover">
                     </div>
 
-                    {{-- BOTTOM RIGHT BIG --}}
                     <div>
-                        <img src="{{ asset('images/herosection.jpg') }}" class="w-[273.42px] h-[185.18px] object-cover">
+                        <img src="{{ asset('images/herosection.jpg') }}"
+                             class="w-full max-w-[273px] h-auto object-cover">
                     </div>
 
                 </div>
+
             </div>
+
         </div>
+
     </div>
+</div>
 
     {{-- product overview --}}
     <div class="my-20 relative flex items-center justify-center">

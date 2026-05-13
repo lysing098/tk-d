@@ -8,8 +8,7 @@
             {{-- LEFT --}}
             <div class="flex items-center justify-center">
 
-                <img src="{{ asset('images/logo.jpg') }}"
-                    alt="logo"
+                <img src="{{ asset('images/logo.jpg') }}" alt="logo"
                     class="w-[220px] sm:w-[280px] md:w-[340px] lg:w-[374px] h-auto object-contain">
 
             </div>
@@ -25,9 +24,7 @@
                     </h1>
 
                     <p class="pt-5 text-sm md:text-base leading-8 text-gray-200">
-                        is a Cambodian-owned company producing eco-friendly rice-flour
-                        straws using locally sourced materials, supporting both
-                        sustainability and local farmers.
+                        {{ $company->title }}
                     </p>
 
                 </div>
@@ -85,17 +82,17 @@
 
                         <div class="flex flex-col gap-4 pt-5 text-gray-200 text-sm md:text-base">
 
-                            <p>Pursat Province, Cambodia</p>
+                            <p>{{ $company->location }}</p>
 
-                            <p>+855 12 590 666</p>
+                            <p>{{ $company->tel }}</p>
 
                             <p class="break-all">
-                                tkd.manufacturing89@gmail.com
+                                {{ $company->email }}
                             </p>
 
-                            <p class="break-all">
+                            {{-- <p class="break-all">
                                 www.tkd.manufacturing.com
-                            </p>
+                            </p> --}}
 
                         </div>
 
@@ -107,40 +104,38 @@
                         <div class="flex flex-wrap items-center gap-4 pt-5">
 
                             {{-- Facebook --}}
-                            <a href="https://facebook.com"
-                                target="_blank"
-                                class="w-10 h-10 flex items-center justify-center rounded-full bg-[#1877F2] hover:scale-110 transition duration-300">
+                            @if ($company->facebook)
+                                <a href="{{ $company->facebook }}" target="_blank"
+                                    class="w-10 h-10 flex items-center justify-center rounded-full bg-[#1877F2] hover:scale-110 transition duration-300">
 
-                                <i class="fa-brands fa-facebook-f text-white"></i>
+                                    <i class="fa-brands fa-facebook-f text-white"></i>
 
-                            </a>
+                                </a>
+                            @endif
 
                             {{-- Telegram --}}
-                            <a href="https://t.me/yourusername"
-                                target="_blank"
-                                class="w-10 h-10 flex items-center justify-center rounded-full bg-[#229ED9] hover:scale-110 transition duration-300">
-
-                                <i class="fa-brands fa-telegram text-white"></i>
-
-                            </a>
+                            @if ($company->telegram)
+                                <a href="https://t.me/yourusername" target="_blank"
+                                    class="w-10 h-10 flex items-center justify-center rounded-full bg-[#229ED9] hover:scale-110 transition duration-300">
+                                    <i class="fa-brands fa-telegram text-white"></i>
+                                </a>
+                            @endif
 
                             {{-- WhatsApp --}}
-                            <a href="https://wa.me/85512590666"
-                                target="_blank"
-                                class="w-10 h-10 flex items-center justify-center rounded-full bg-[#25D366] hover:scale-110 transition duration-300">
-
-                                <i class="fa-brands fa-whatsapp text-white"></i>
-
-                            </a>
+                            @if ($company->whatsapp)
+                                <a href="https://wa.me/85512590666" target="_blank"
+                                    class="w-10 h-10 flex items-center justify-center rounded-full bg-[#25D366] hover:scale-110 transition duration-300">
+                                    <i class="fa-brands fa-whatsapp text-white"></i>
+                                </a>
+                            @endif
 
                             {{-- Instagram --}}
-                            <a href="https://instagram.com"
-                                target="_blank"
-                                class="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 hover:scale-110 transition duration-300">
-
-                                <i class="fa-brands fa-instagram text-white"></i>
-
-                            </a>
+                            @if ($company->instagram)
+                                <a href="https://instagram.com" target="_blank"
+                                    class="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 hover:scale-110 transition duration-300">
+                                    <i class="fa-brands fa-instagram text-white"></i>
+                                </a>
+                            @endif
 
                         </div>
 

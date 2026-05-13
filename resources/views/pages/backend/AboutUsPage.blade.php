@@ -25,12 +25,12 @@
         </form>
 
         @if ($errors->any())
-    <div class="bg-red-500 text-white p-2">
-        @foreach ($errors->all() as $error)
-            <div>{{ $error }}</div>
-        @endforeach
-    </div>
-@endif
+            <div class="bg-red-500 text-white p-2">
+                @foreach ($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            </div>
+        @endif
 
         {{-- ================= HERO SECTION ================= --}}
         <div class="bg-gray-900 p-5 rounded-xl border border-gray-700">
@@ -56,7 +56,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if($hero)
+                    @if ($hero)
                         <tr class="border-b border-gray-800">
                             <td>{{ Str::limit($hero->title, 20) }}</td>
                             <td>{{ Str::limit($hero->sub_title, 20) }}</td>
@@ -107,6 +107,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Role</th>
+                        <th>Order</th>
                         <th>Image</th>
                         <th class="text-right">Action</th>
                     </tr>
@@ -120,6 +121,8 @@
                             <td>{{ $team->name }}</td>
 
                             <td>{{ $team->role }}</td>
+
+                            <td>{{ $team->order }}</td>
 
                             <td>
                                 <img src="{{ asset('storage/' . $team->image) }}" class="w-20 h-20 object-cover rounded">
@@ -332,6 +335,15 @@
 
                             <div>
                                 <label class="block text-sm font-medium mb-1">
+                                    Order
+                                </label>
+
+                                <input type="text" name="order" x-model="form.order"
+                                    class="w-full border p-2 rounded">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-1">
                                     Image
                                 </label>
 
@@ -453,7 +465,8 @@
 
                     this.form = {
                         name: '',
-                        role: ''
+                        role: '',
+                        order: ''
                     };
 
                     this.show = true;

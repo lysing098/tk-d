@@ -1,34 +1,42 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
     public function index(Request $request)
     {
         $search = $request->search;
+
         $products = Product::when($search, function ($query) use ($search) {
-                $query->where('title', 'like', "%{$search}%")
-                    ->orWhere('description', 'like', "%{$search}%");
-            })
-            ->get();
+            $query->where('title', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%");
+        })->latest()->get();
+
         return view('pages.backend.ProductPage', compact('products'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => [
+                'required',
+                Rule::unique('tbl_product')->where(function ($query) use ($request) {
+                    return $query->where('size', $request->size)
+                                ->where('color', $request->color);
+                })
+            ],
             'description' => 'nullable|string',
             'size' => 'required|string',
             'color' => 'required|string',
-            'order' => 'required|unique:tbl_product,order',
+            'order' => 'required|integer|unique:tbl_product,order',
             'images' => 'required|array|min:1',
             'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:2048',
-
         ]);
 
         $paths = [];
@@ -57,21 +65,17 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|max:255|unique:tbl_product,title,' . $product->id,
             'size' => 'required|string',
             'color' => 'required|string',
-            'order' => 'required|unique:tbl_product,order,' .$product->order,
+            'order' => 'required|integer|unique:tbl_product,order,' . $product->id,
             'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        // keep old images first
         $paths = json_decode($product->images, true) ?? [];
 
-        // upload new images and append
         if ($request->hasFile('images')) {
-
             foreach ($request->file('images') as $file) {
-
                 $paths[] = $file->store('products', 'public');
             }
         }
@@ -95,14 +99,17 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        if ($product->images) {
-            foreach ($product->images as $img) {
-                Storage::disk('public')->delete($img);
-            }
+        $images = json_decode($product->images, true) ?? [];
+
+        foreach ($images as $img) {
+            Storage::disk('public')->delete($img);
         }
 
         $product->delete();
 
-        return back()->with('success', 'Deleted');
+        return response()->json([
+            'success' => true,
+            'message' => 'Product deleted successfully'
+        ]);
     }
 }

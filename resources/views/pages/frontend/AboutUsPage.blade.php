@@ -48,18 +48,17 @@
     </div>
 
     <!-- CTA SECTION -->
-    <div class="mt-20 bg-[#0B0B54] text-white py-20 text-center relative overflow-hidden">
+    <div class="mt-20 bg-[#0B0B54] text-white py-16 md:py-20 text-center relative overflow-hidden">
 
-        <!-- TEXT -->
+    <h2 class="mx-auto max-w-4xl text-lg sm:text-xl md:text-2xl lg:text-[32px] font-bold mb-8 leading-relaxed px-4">
 
-        <h2 class="text-[26px] md:text-[32px] font-bold mb-8 relative z-10 px-50">
-            “ From local agricultural resources to global markets,<br />
-            TK&D transforms rice into sustainable solutions<br />
-            that reduce plastic waste.”
-        </h2>
+        “From local agricultural resources to global markets,
+        TK&D transforms rice into sustainable solutions
+        that reduce plastic waste.”
 
+    </h2>
 
-    </div>
+</div>
 
     {{-- team --}}
     <div class="py-20 relative">
@@ -85,7 +84,7 @@
             {{-- FOUNDERS --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
 
-                @foreach ($teams->whereIn('role', ['Founder', 'Co-Founder']) as $member)
+                @foreach ($teams->whereIn('role', ['Director','Founder', 'Co-Founder']) as $member)
                     <div class="text-center">
 
                         <div class="relative overflow-hidden">
@@ -117,7 +116,7 @@
             {{-- TEAM MEMBERS --}}
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
 
-                @foreach ($teams->whereNotIn('role', ['Founder', 'Co-Founder'])->take(4) as $member)
+                @foreach ($teams->whereNotIn('role', ['Founder', 'Co-Founder','Director'])->take(4) as $member)
                     <div class="text-center">
 
                         <div class="relative overflow-hidden">
@@ -149,7 +148,7 @@
             {{-- LAST ROW --}}
             <div class="flex flex-wrap justify-center gap-6 mt-10">
 
-                @foreach ($teams->whereNotIn('role', ['Founder', 'Co-Founder'])->skip(4) as $member)
+                @foreach ($teams->whereNotIn('role', ['Founder', 'Co-Founder','Director'])->skip(4) as $member)
                     <div class="w-full sm:w-[300px] text-center">
 
                         <div class="relative overflow-hidden">

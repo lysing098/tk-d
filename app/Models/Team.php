@@ -8,5 +8,5 @@ class Team extends Model
 {
     protected $table ='tbl_team';
 
-    protected $fillable = ['name','role','image'];
+    protected $fillable = ['name','role','image','order'];
 }

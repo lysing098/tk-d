@@ -108,7 +108,7 @@ Route::get('/', function () {
 Route::get('/about-us', function () {
      $hero = Herosection::where('page','about')->first();
 
-     $teams = Team::latest()->get();
+     $teams = Team::orderBy('order')->get();
 
      $certificate = Certificate::orderBy('order')->get();
 
