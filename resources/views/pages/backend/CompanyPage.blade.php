@@ -34,6 +34,10 @@
                         <th class="py-2 text-left">Tel</th>
                         <th class="py-2 text-left">Description</th>
                         <th class="py-2 text-left">Location</th>
+                        <th class="py-2 text-left">Facebook</th>
+                        <th class="py-2 text-left">Telegram</th>
+                        <th class="py-2 text-left">Whatsapp</th>
+                        <th class="py-2 text-left">Instagram</th>
                         <th class="py-2 text-right">Action</th>
                     </tr>
                 </thead>
@@ -46,6 +50,10 @@
                             <td class="py-2">{{ $company->tel }}</td>
                             <td>{{ Str::limit($company->description, 20) }}</td>
                             <td class="py-2">{{ $company->location }}</td>
+                            <td class="py-2">{{ $company->facebook }}</td>
+                            <td class="py-2">{{ $company->telegram }}</td>
+                            <td class="py-2">{{ $company->whatsapp }}</td>
+                            <td class="py-2">{{ $company->instagram }}</td>
 
                             <td class="py-2 text-right space-x-2">
                                 <button @click='openEdit(@json($company))'
@@ -90,6 +98,14 @@
 
                         <input x-model="form.location" placeholder="Location" class="w-full border p-2 rounded">
 
+                        <input x-model="form.facebook" placeholder="facebook" class="w-full border p-2 rounded">
+
+                        <input x-model="form.telegram" placeholder="telegram" class="w-full border p-2 rounded">
+
+                        <input x-model="form.whatsapp" placeholder="whatsapp" class="w-full border p-2 rounded">
+
+                        <input x-model="form.instagram" placeholder="instagram" class="w-full border p-2 rounded">
+
                         <textarea x-model="form.description" placeholder="Description" class="w-full border p-2 rounded"></textarea>
 
                     </div>
@@ -131,7 +147,11 @@
                     description: '',
                     email: '',
                     tel: '',
-                    location: ''
+                    location: '',
+                    facebook: '',
+                    telegram: '',
+                    whatsapp: '',
+                    instagram: ''
                 },
 
                 // ================= CREATE =================
@@ -156,6 +176,10 @@
                         email: company.email ?? '',
                         tel: company.tel ?? '',
                         location: company.location ?? '',
+                        facebook: company.facebook ?? '',
+                        telegram: company.telegram ?? '',
+                        whatsapp: company.whatsapp ?? '',
+                        instagram: company.instagram ?? '',
                     };
 
                     this.show = true;
@@ -163,15 +187,22 @@
 
                 // ================= RESET =================
                 reset() {
-                    this.errors = {};
-                    this.form = {
-                        title: '',
-                        description: '',
-                        email: '',
-                        tel: '',
-                        location: ''
-                    };
-                },
+
+    this.errors = {};
+
+    this.form = {
+        title: '',
+        description: '',
+        email: '',
+        tel: '',
+        location: '',
+        facebook: '',
+        telegram: '',
+        whatsapp: '',
+        instagram: ''
+    };
+
+},
 
                 // ================= SUBMIT =================
                 async submitForm() {
@@ -190,11 +221,16 @@
 
                     const fd = new FormData();
 
-                    fd.append('title', this.form.title);
-                    fd.append('description', this.form.description);
-                    fd.append('email', this.form.email);
-                    fd.append('tel', this.form.tel);
-                    fd.append('location', this.form.location);
+fd.append('title', this.form.title);
+fd.append('description', this.form.description);
+fd.append('email', this.form.email);
+fd.append('tel', this.form.tel);
+fd.append('location', this.form.location);
+
+fd.append('facebook', this.form.facebook);
+fd.append('telegram', this.form.telegram);
+fd.append('whatsapp', this.form.whatsapp);
+fd.append('instagram', this.form.instagram);
 
                     fd.append('_token',
                         document.querySelector('meta[name="csrf-token"]').content

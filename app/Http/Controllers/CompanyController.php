@@ -32,7 +32,11 @@ class CompanyController extends Controller
             'description'=>"required|string",
             'email'=>'required|email',
             'tel'=>'required|string',
-            'location'=>'required|string'
+            'location'=>'required|string',
+            'facebook'=>'nullable|string',
+            'telegram'=>'nullable|string',
+            'whatsapp'=>'nullable|string',
+            'instagram'=>'nullable|string',
         ]);
 
         Company::create($validated);
@@ -61,7 +65,11 @@ class CompanyController extends Controller
             'description'=>"required|string",
             'email'=>'required|email',
             'tel'=>'required|string',
-            'location'=>'required|string'
+            'location'=>'required|string',
+            'facebook'=>'nullable|string',
+            'telegram'=>'nullable|string',
+            'whatsapp'=>'nullable|string',
+            'instagram'=>'nullable|string',
         ]);
 
         $company = Company::findOrFail($id);

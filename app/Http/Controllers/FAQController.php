@@ -24,7 +24,7 @@ class FAQController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'answer' => 'required|string',
-            'order'  => 'required|integer|min:0|unique:tbl_faq,order',
+            // 'order'  => 'required|integer|min:0|unique:tbl_faq,order',
             'page' => 'required|string'
         ]);
 
@@ -50,12 +50,12 @@ class FAQController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'answer' => 'required|string',
-            'order'  => [
-                'required',
-                'integer',
-                'min:0',
-                Rule::unique('tbl_faq', 'order')->ignore($id),
-            ],
+            // 'order'  => [
+            //     'nullable',
+            //     'integer',
+            //     'min:0',
+            //     Rule::unique('tbl_faq', 'order')->ignore($id),
+            // ],
             'page' => 'required|string'
         ]);
 

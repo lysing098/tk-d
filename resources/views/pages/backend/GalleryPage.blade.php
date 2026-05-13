@@ -12,10 +12,10 @@
 
         {{-- HEADER --}}
         <div class="flex justify-between items-center">
-            <h1 class="text-2xl text-white font-semibold">Gallery Dashboard</h1>
-            <button @click="openCreate()" class="px-4 py-2 bg-green-500 text-white rounded">
+            <h1 class="text-2xl text-white font-semibold">Gallery</h1>
+            {{-- <button @click="openCreate()" class="px-4 py-2 bg-green-500 text-white rounded">
                 + Add Gallery
-            </button>
+            </button> --}}
         </div>
 
         {{-- SUCCESS TOAST --}}
@@ -50,10 +50,10 @@
                                     class="px-3 py-1 bg-yellow-500 text-black rounded">
                                     Edit
                                 </button>
-                                <button @click="deletedGallery({{ $product->id }})"
+                                {{-- <button @click="deletedGallery({{ $product->id }})"
                                     class="px-3 py-1 bg-red-500 text-white rounded">
                                     Delete
-                                </button>
+                                </button> --}}
                             </td>
                         </tr>
                     @empty

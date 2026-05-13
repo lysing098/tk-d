@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AdminAboutUsController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\BlogController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\TradingProductController;
 use App\Models\Certificate;
 use App\Models\Company;
 use App\Models\Faq;
+use App\Models\Gallery;
 use App\Models\Herosection;
 use App\Models\Team;
 use Illuminate\Support\Facades\Route;
@@ -41,7 +43,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
 
     Route::get('/export', [ExportController::class, 'index'])->name('admin.export');
 
-
+    Route::get('/business-activities', [ActivityController::class, 'index'])->name('admin.activity');
 
      // FAQ CRUD
     Route::post('/faq', [FAQController::class, 'store'])->name('faq.store');
@@ -118,13 +120,15 @@ Route::get('/our-trading-products', function() {
 });
 
 Route::get('/export', function() {
-    $hero = Herosection::where('page','home')->first();
+    $hero = Herosection::where('page','export')->first();
+    $galleries = Gallery::get();
+    $faq = Faq::where('page','export')->get();
 
-    return view('pages.frontend.ExportPage',compact('hero'));
+    return view('pages.frontend.ExportPage',compact('hero','galleries','faq'));
 });
 
 Route::get('/business-activities', function() {
-    $hero = Herosection::where('page','home')->first();
+    $hero = Herosection::where('page','activity')->first();
 
     return view('pages.frontend.ActivityPage',compact('hero'));
 });

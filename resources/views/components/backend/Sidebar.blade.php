@@ -16,9 +16,14 @@
             'url' => '/admin/about-us',
         ],
         [
-            'name' => 'Export',
+            'name' => 'Export Page',
             'icon' => 'M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4m16 0H4',
             'url' => '/admin/export',
+        ],
+        [
+            'name' => 'Business Activities Page',
+            'icon' => 'M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4m16 0H4',
+            'url' => '/admin/business-activities',
         ],
         [
             'name' => 'Product',

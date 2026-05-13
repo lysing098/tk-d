@@ -444,14 +444,35 @@
 
     {{-- gallery --}}
     <div class="my-20">
-        <p class="text-[40px] text-red-500 text-center font-bold mb-10">Gallery</p>
-        <div class="grid grid-cols-4 gap-10 container mx-auto max-w-7xl">
-            <div class="w-[292px] h-[292px] bg-gray-400"></div>
-            <div class="w-[292px] h-[292px] bg-gray-400"></div>
-            <div class="w-[292px] h-[292px] bg-gray-400"></div>
-            <div class="w-[292px] h-[292px] bg-gray-400"></div>
-        </div>
 
+        <p class="text-[40px] text-red-500 text-center font-bold mb-10">
+            Gallery
+        </p>
+
+        <div class="grid grid-cols-4 gap-10 container mx-auto max-w-7xl">
+
+            @foreach ($galleries as $gallery)
+                @php
+                    // if images is JSON array
+                    $images = is_string($gallery->images) ? json_decode($gallery->images, true) : $gallery->images;
+                @endphp
+
+                @if (is_array($images))
+                    @foreach ($images as $img)
+                        <div class="w-[292px] h-[292px] overflow-hidden rounded-lg">
+                            <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-cover"
+                                alt="gallery image">
+                        </div>
+                    @endforeach
+                @else
+                    <div class="w-[292px] h-[292px] overflow-hidden rounded-lg">
+                        <img src="{{ asset('storage/' . $gallery->images) }}" class="w-full h-full object-cover"
+                            alt="gallery image">
+                    </div>
+                @endif
+            @endforeach
+
+        </div>
     </div>
 
     {{-- faq --}}
@@ -459,25 +480,17 @@
         <p class="text-[40px] text-red-500 text-center font-bold mb-10">FAQ (Buyer-Focused)</p>
 
         <div class="max-w-7xl container  mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="faq-item border rounded-md p-4 bg-[#0B0B54] text-white self-start">
-            <button class="faq-btn w-full flex justify-between font-semibold">
-                title
-                <span>+</span>
-            </button>
-            <div class="faq-content hidden mt-3">
-                answer
-            </div>
-        </div>
-
-        <div class="faq-item border rounded-md p-4 bg-[#0B0B54] text-white self-start">
-            <button class="faq-btn w-full flex justify-between font-semibold">
-                title
-                <span>+</span>
-            </button>
-            <div class="faq-content hidden mt-3">
-                answer
-            </div>
-        </div>
+            @foreach ($faq as $item)
+                <div class="faq-item border rounded-md p-4 bg-[#0B0B54] text-white self-start">
+                    <button class="faq-btn w-full flex justify-between font-semibold">
+                        {{ $item->title}}
+                        <span>+</span>
+                    </button>
+                    <div class="faq-content hidden mt-3">
+                        {{ $item->answer }}
+                    </div>
+                </div>
+            @endforeach
         </div>
 
     </div>

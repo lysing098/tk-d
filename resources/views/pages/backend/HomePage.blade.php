@@ -96,7 +96,7 @@
                     <tr>
                         <th>Title</th>
                         <th>Answer</th>
-                        <th>Order</th>
+                        {{-- <th>Order</th> --}}
                         <th class="text-right">Action</th>
                     </tr>
                 </thead>
@@ -105,7 +105,7 @@
                         <tr class="border-b border-gray-800">
                             <td>{{ $faq->title }}</td>
                             <td>{{ Str::limit($faq->answer, 50) }}</td>
-                            <td>{{ $faq->order }}</td>
+                            {{-- <td>{{ $faq->order }}</td> --}}
                             <td class="text-right space-x-2">
                                 <button @click="openFaqEdit(@js($faq))"
                                     class="px-3 py-1 bg-yellow-500 text-black rounded">
@@ -218,11 +218,11 @@
                                     placeholder="home or about or product"
                                     class="w-full border p-2 rounded focus:border-blue-500">
                             </div>
-                            <div>
+                            {{-- <div>
                                 <label class="block text-sm font-medium mb-1">Order</label>
                                 <input type="number" name="order" x-model="form.order"
                                     class="w-full border p-2 rounded">
-                            </div>
+                            </div> --}}
                         </div>
                     </template>
 
@@ -334,7 +334,7 @@
                     this.form = {
                         title: faq.title ?? '',
                         answer: faq.answer ?? '',
-                        order: faq.order ?? 0,
+                        // order: faq.order ?? 0,
                         page: faq.page ?? 'home'
                     };
 
@@ -345,7 +345,7 @@
                     this.form = {
                         title: '',
                         answer: '',
-                        order: 0,
+                        // order: 0,
                         page: 'home'
                     };
                 },

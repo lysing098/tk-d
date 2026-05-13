@@ -51,11 +51,11 @@
                 <h2
                     class="text-xl sm:text-2xl md:text-4xl lg:text-[44px]
                        leading-snug md:leading-tight font-bold break-words">
-                    {{ $hero->title }}
+                    Rice Straws vs Paper Straws
                 </h2>
 
                 <p class="text-sm sm:text-base md:text-lg lg:text-[22px] leading-relaxed">
-                    {{ $hero->sub_title }}
+                    Which Is Better for Your Business?
                 </p>
 
                 <!-- Buttons -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Faq;
 use App\Models\Herosection;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,16 @@ class ExportController extends Controller
 
         $hero = Herosection::where('page', 'export')->first(); // keep single hero
 
+        $faqs = Faq::where('page','export')->
+        when($search, function ($query) use ($search) {
+                $query->where('title', 'like', "%{$search}%")
+                    ->orWhere('answer', 'like', "%{$search}%");
+            })
+            ->orderBy('id', 'asc')
+            ->get();
 
-        return view('pages.backend.ExportPage',compact('hero'));
+
+        return view('pages.backend.ExportPage',compact('hero','faqs'));
     }
 
     /**
