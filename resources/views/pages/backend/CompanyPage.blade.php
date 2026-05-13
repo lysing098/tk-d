@@ -41,10 +41,10 @@
                 <tbody>
                     @if ($company)
                         <tr class="border-b border-gray-800">
-                            <td class="py-2">{{ $company->title }}</td>
+                            <td>{{ Str::limit($company->title, 30) }}</td>
                             <td class="py-2">{{ $company->email }}</td>
                             <td class="py-2">{{ $company->tel }}</td>
-                            <td class="py-2">{{ $company->description }}</td>
+                            <td>{{ Str::limit($company->description, 20) }}</td>
                             <td class="py-2">{{ $company->location }}</td>
 
                             <td class="py-2 text-right space-x-2">

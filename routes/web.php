@@ -5,12 +5,14 @@ use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HeroSectionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TradingProductController;
 use App\Models\Certificate;
 use App\Models\Company;
 use App\Models\Faq;
@@ -36,6 +38,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/blog', [BlogController::class, 'index'])->name('admin.blog');
 
     Route::get('/company', [CompanyController::class, 'index'])->name('admin.company');
+
+    Route::get('/export', [ExportController::class, 'index'])->name('admin.export');
 
 
 

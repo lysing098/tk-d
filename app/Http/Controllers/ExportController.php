@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faq;
 use App\Models\Herosection;
 use Illuminate\Http\Request;
 
-class AdminHomeController extends Controller
+class ExportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,22 +14,10 @@ class AdminHomeController extends Controller
     {
         $search = $request->search;
 
-        $faqs = Faq::where('page','home')->
-        when($search, function ($query) use ($search) {
-                $query->where('title', 'like', "%{$search}%")
-                    ->orWhere('answer', 'like', "%{$search}%");
-            })
-            ->orderBy('order', 'asc')
-            ->get();
+        $hero = Herosection::where('page', 'export')->first(); // keep single hero
 
-        $hero = Herosection::where('page', 'home')
-            ->when($search, function ($query) use ($search) {
-                $query->where('title', 'like', "%{$search}%")
-                    ->orWhere('sub_title', 'like', "%{$search}%");
-            })
-            ->first();
 
-        return view('pages.backend.HomePage', compact('faqs', 'hero'));
+        return view('pages.backend.ExportPage',compact('hero'));
     }
 
     /**

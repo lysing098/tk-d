@@ -1,7 +1,7 @@
 @extends('layouts.Backend.MainLayout')
 
 @section('content')
-    <div x-data="adminModal()" x-init="init()" class="p-6 space-y-10">
+    <div x-data="adminModal()" class="p-6 space-y-10">
 
         {{-- HEADER --}}
         <div class="flex items-center justify-between">
@@ -28,9 +28,9 @@
         <div class="bg-gray-900 p-5 rounded-xl border border-gray-700">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-lg text-white">Hero Section</h2>
-                <button @click="openHeroCreate()" class="px-4 py-2 bg-green-500 text-white rounded-lg">
+                {{-- <button @click="openHeroCreate()" class="px-4 py-2 bg-green-500 text-white rounded-lg">
                     + Add Hero
-                </button>
+                </button> --}}
             </div>
 
             <table class="w-full text-sm text-left text-gray-300">
@@ -38,7 +38,7 @@
                     <tr>
                         <th>Title</th>
                         <th>Subtitle</th>
-                        <th>Page</th>
+                        {{-- <th>Page</th> --}}
                         <th>Button Primary</th>
                         <th>Button Primary Link</th>
                         <th>Button Secondary</th>
@@ -52,7 +52,7 @@
                         <tr class="border-b border-gray-800">
                             <td>{{ Str::limit($hero->title, 20) }}</td>
                             <td>{{ Str::limit($hero->sub_title, 20) }}</td>
-                            <td>{{ $hero->page }}</td>
+                            {{-- <td>{{ $hero->page }}</td> --}}
                             <td>{{ $hero->btn_primary_text }}</td>
                             <td>{{ $hero->btn_primary_link }}</td>
                             <td>{{ $hero->btn_secondary_text }}</td>
@@ -67,14 +67,14 @@
                                     Edit
                                 </button>
 
-                                <form x-data @submit.prevent="confirmDelete($el)" action="/admin/hero/{{ $hero->id }}"
+                                {{-- <form x-data @submit.prevent="confirmDelete($el)" action="/admin/hero/{{ $hero->id }}"
                                     method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="px-3 py-1 bg-red-500 text-white rounded">
                                         Delete
                                     </button>
-                                </form>
+                                </form> --}}
                             </td>
                         </tr>
                     @endif
@@ -158,12 +158,11 @@
 
                             <!-- Most Important Fix -->
                             <div>
-                                <label class="block text-sm font-medium mb-1">Page <span
-                                        class="text-red-500">*</span></label>
-                                <input type="text" name="page" x-model="form.page"
+                                {{-- <label class="block text-sm font-medium mb-1">Page <span
+                                        class="text-red-500">*</span></label> --}}
+                                <input type="hidden" name="page" x-model="form.page"
                                     placeholder="home or about or product"
                                     class="w-full border p-2 rounded focus:border-blue-500">
-                                <p class="text-xs text-gray-500 mt-1">Example: <strong>home</strong></p>
                             </div>
 
                             <div class="grid grid-cols-2 gap-3">
@@ -213,6 +212,13 @@
                                 <textarea name="answer" x-model="form.answer" rows="4" class="w-full border p-2 rounded"></textarea>
                             </div>
                             <div>
+                                {{-- <label class="block text-sm font-medium mb-1">Page <span
+                                        class="text-red-500">*</span></label> --}}
+                                <input type="hidden" name="page" x-model="form.page"
+                                    placeholder="home or about or product"
+                                    class="w-full border p-2 rounded focus:border-blue-500">
+                            </div>
+                            <div>
                                 <label class="block text-sm font-medium mb-1">Order</label>
                                 <input type="number" name="order" x-model="form.order"
                                     class="w-full border p-2 rounded">
@@ -243,18 +249,31 @@
                 method: 'POST',
                 actionUrl: '',
                 title: '',
-                form: {},
-
                 init() {
-                    // Optional: any initialization
+
+                },
+
+                form: {
+                    title: '',
+                    sub_title: '',
+                    page: 'home',
+                    btn_primary_text: '',
+                    btn_primary_link: '',
+                    btn_secondary_text: '',
+                    btn_secondary_link: '',
+                    answer: '',
+                    order: 0,
                 },
 
                 // ================= HERO =================
                 openHeroCreate() {
+                    this.reset();
+
                     this.type = 'hero';
                     this.method = 'POST';
                     this.title = 'Create New Hero';
                     this.actionUrl = '/admin/hero';
+
                     this.form = {
                         title: '',
                         sub_title: '',
@@ -262,19 +281,30 @@
                         btn_primary_text: '',
                         btn_primary_link: '',
                         btn_secondary_text: '',
-                        btn_secondary_link: ''
+                        btn_secondary_link: '',
                     };
+
                     this.show = true;
                 },
 
                 openHeroEdit(hero) {
+                    this.reset();
+
                     this.type = 'hero';
                     this.method = 'PUT';
                     this.title = 'Edit Hero';
                     this.actionUrl = `/admin/hero/${hero.id}`;
+
                     this.form = {
-                        ...hero
-                    }; // spread to avoid reference issues
+                        title: hero.title ?? '',
+                        sub_title: hero.sub_title ?? '',
+                        page: hero.page ?? 'home',
+                        btn_primary_text: hero.btn_primary_text ?? '',
+                        btn_primary_link: hero.btn_primary_link ?? '',
+                        btn_secondary_text: hero.btn_secondary_text ?? '',
+                        btn_secondary_link: hero.btn_secondary_link ?? '',
+                    };
+
                     this.show = true;
                 },
 
@@ -284,11 +314,14 @@
                     this.method = 'POST';
                     this.title = 'Create FAQ';
                     this.actionUrl = '/admin/faq';
+
                     this.form = {
                         title: '',
                         answer: '',
-                        order: 0
+                        order: 0,
+                        page: 'home'
                     };
+
                     this.show = true;
                 },
 
@@ -297,14 +330,28 @@
                     this.method = 'PUT';
                     this.title = 'Edit FAQ';
                     this.actionUrl = `/admin/faq/${faq.id}`;
+
                     this.form = {
-                        ...faq
+                        title: faq.title ?? '',
+                        answer: faq.answer ?? '',
+                        order: faq.order ?? 0,
+                        page: faq.page ?? 'home'
                     };
+
                     this.show = true;
                 },
 
+                reset() {
+                    this.form = {
+                        title: '',
+                        answer: '',
+                        order: 0,
+                        page: 'home'
+                    };
+                },
+
                 confirmDelete(formEl) {
-                    if (confirm('Are you sure you want to delete this?')) {
+                    if (confirm('Are you sure?')) {
                         formEl.submit();
                     }
                 }

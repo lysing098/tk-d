@@ -25,6 +25,7 @@ class FAQController extends Controller
             'title' => 'required|string|max:255',
             'answer' => 'required|string',
             'order'  => 'required|integer|min:0|unique:tbl_faq,order',
+            'page' => 'required|string'
         ]);
 
         Faq::create($validated);
@@ -55,7 +56,9 @@ class FAQController extends Controller
                 'min:0',
                 Rule::unique('tbl_faq', 'order')->ignore($id),
             ],
+            'page' => 'required|string'
         ]);
+
 
         $faq = Faq::findOrFail($id);
         $faq->update($validated);

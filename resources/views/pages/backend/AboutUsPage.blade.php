@@ -36,9 +36,9 @@
         <div class="bg-gray-900 p-5 rounded-xl border border-gray-700">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-lg text-white">Hero Section</h2>
-                <button @click="openHeroCreate()" class="px-4 py-2 bg-green-500 text-white rounded-lg">
+                {{-- <button @click="openHeroCreate()" class="px-4 py-2 bg-green-500 text-white rounded-lg">
                     + Add Hero
-                </button>
+                </button> --}}
             </div>
 
             <table class="w-full text-sm text-left text-gray-300">
@@ -75,14 +75,14 @@
                                     Edit
                                 </button>
 
-                                <form x-data @submit.prevent="confirmDelete($el)" action="/admin/hero/{{ $hero->id }}"
+                                {{-- <form x-data @submit.prevent="confirmDelete($el)" action="/admin/hero/{{ $hero->id }}"
                                     method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="px-3 py-1 bg-red-500 text-white rounded">
                                         Delete
                                     </button>
-                                </form>
+                                </form> --}}
                             </td>
                         </tr>
                     @endif
@@ -266,12 +266,11 @@
 
                             <!-- Most Important Fix -->
                             <div>
-                                <label class="block text-sm font-medium mb-1">Page <span
-                                        class="text-red-500">*</span></label>
-                                <input type="text" name="page" x-model="form.page"
+                                {{-- <label class="block text-sm font-medium mb-1">Page <span
+                                        class="text-red-500">*</span></label> --}}
+                                <input type="hidden" name="page" x-model="form.page"
                                     placeholder="home or about or product"
                                     class="w-full border p-2 rounded focus:border-blue-500">
-                                <p class="text-xs text-gray-500 mt-1">Example: <strong>home</strong></p>
                             </div>
 
                             <div class="grid grid-cols-2 gap-3">

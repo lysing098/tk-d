@@ -8,5 +8,5 @@ class Faq extends Model
 {
     protected $table = 'tbl_faq';
 
-    protected $fillable = ['title','answer','order'];
+    protected $fillable = ['title','answer','order','page'];
 }

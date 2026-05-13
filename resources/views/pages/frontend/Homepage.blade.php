@@ -581,8 +581,8 @@
                             </span>
 
                             <span class="shrink-0 text-lg faq-icon">
-    +
-</span>
+                                +
+                            </span>
 
                         </button>
 
@@ -606,8 +606,8 @@
                                 </span>
 
                                 <span class="shrink-0 text-lg faq-icon">
-    +
-</span>
+                                    +
+                                </span>
 
                             </button>
 
