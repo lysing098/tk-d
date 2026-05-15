@@ -19,6 +19,7 @@ use App\Models\Company;
 use App\Models\Faq;
 use App\Models\Gallery;
 use App\Models\Herosection;
+use App\Models\Product;
 use App\Models\Team;
 use Illuminate\Support\Facades\Route;
 
@@ -115,8 +116,13 @@ Route::get('/about-us', function () {
     return view('pages.frontend.AboutUsPage',compact('hero','teams','certificate'));
 });
 
-Route::get('/our-trading-products', function() {
-    return view('pages.frontend.ProductPage');
+Route::get('/our-trading-products', function () {
+
+    $products = Product::where('title', 'Rice Flour Drinking Straws')->get();
+
+    $mainProduct = $products->first();
+
+    return view('pages.frontend.ProductPage', compact('products', 'mainProduct'));
 });
 
 Route::get('/export', function() {
@@ -124,7 +130,16 @@ Route::get('/export', function() {
     $galleries = Gallery::get();
     $faq = Faq::where('page','export')->get();
 
-    return view('pages.frontend.ExportPage',compact('hero','galleries','faq'));
+    $product = Product::where('title', 'Rice Flour Drinking Straws')->get();
+    $main = $product->first();
+
+    return view('pages.frontend.ExportPage', compact(
+        'hero',
+        'galleries',
+        'faq',
+        'product',
+        'main'
+    ));
 });
 
 Route::get('/business-activities', function() {
@@ -139,5 +154,9 @@ Route::get('/blog', function() {
     return view('pages.frontend.BlogPage',compact('hero'));
 });
 
+Route::get('/contact-us', function() {
+    $hero = Herosection::where('page','home')->first();
+    return view('pages.frontend.ContactUsPage',compact('hero'));
+});
 
 require __DIR__.'/auth.php';

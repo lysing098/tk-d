@@ -82,122 +82,167 @@
     </div>
 
     {{-- our target --}}
-    <div class="my-20 bg-[#0B0B54] min-h-[577px] flex flex-col lg:flex-row items-center justify-center relative px-4 lg:px-0">
+    <div
+        class="my-20 bg-[#0B0B54] min-h-[577px] flex flex-col lg:flex-row items-center justify-center relative px-4 lg:px-0">
 
-    <!-- SECTION TITLE -->
-    <div class="absolute top-0 left-0 w-2/3 md:w-1/3 overflow-hidden">
+        <!-- SECTION TITLE -->
+        <div class="absolute top-0 left-0 w-2/3 md:w-1/3 overflow-hidden">
 
-        <div class="absolute inset-0 bg-[#ED1C24]
+            <div class="absolute inset-0 bg-[#ED1C24]
         [clip-path:polygon(0_0,100%_0,90%_100%,0_100%)]">
-        </div>
-
-        <div class="relative z-10 px-4 md:px-6 py-3 flex justify-start md:justify-center">
-            <h1 class="text-lg md:text-2xl font-bold text-white capitalize">
-                Our Target Buyers
-            </h1>
-        </div>
-
-    </div>
-
-    <div class="text-white flex flex-col md:flex-row items-center gap-10 w-full max-w-6xl px-5">
-
-        {{-- text --}}
-        <div class="text-center md:text-left">
-
-            <p class="mb-2 text-[22px] md:text-[30px]">We serve:</p>
-
-            <ul class="list-disc pl-5 space-y-1 text-[16px] md:text-[20px] text-left">
-                <li>Importers &amp; Distributors</li>
-                <li>Supermarkets &amp; Retail Chains</li>
-                <li>F&amp;B brands (coffee, bubble tea, restaurants)</li>
-                <li>Eco-friendly product wholesalers</li>
-            </ul>
-
-        </div>
-
-        {{-- images --}}
-        <div class="w-full flex justify-center">
-
-            <div>
-
-                {{-- ROW 1 --}}
-                <div class="grid grid-cols-2 gap-4 max-w-3xl">
-
-                    <div>
-                        <img src="{{ asset('images/herosection.jpg') }}"
-                             class="w-full max-w-[268px] h-auto object-cover">
-                    </div>
-
-                    <div class="flex items-end">
-                        <img src="{{ asset('images/herosection.jpg') }}"
-                             class="w-full max-w-[188px] h-auto object-cover">
-                    </div>
-
-                </div>
-
-                {{-- ROW 2 --}}
-                <div class="grid grid-cols-2 gap-4 max-w-3xl pt-5">
-
-                    <div class="flex justify-end">
-                        <img src="{{ asset('images/herosection.jpg') }}"
-                             class="w-full max-w-[188px] h-auto object-cover">
-                    </div>
-
-                    <div>
-                        <img src="{{ asset('images/herosection.jpg') }}"
-                             class="w-full max-w-[273px] h-auto object-cover">
-                    </div>
-
-                </div>
-
             </div>
 
-        </div>
-
-    </div>
-</div>
-
-    {{-- product overview --}}
-    <div class="my-20 relative flex items-center justify-center">
-        <div class="absolute top-0  right-0 w-2/3 md:w-1/3 overflow-hidden">
-            <!-- mirrored background -->
-            <div class="absolute inset-0 bg-[#ED1C24] [clip-path:polygon(0_0,100%_0,90%_100%,0_100%)] scale-x-[-1] ">
-            </div>
-
-            <!-- normal content -->
             <div class="relative z-10 px-4 md:px-6 py-3 flex justify-start md:justify-center">
                 <h1 class="text-lg md:text-2xl font-bold text-white capitalize">
-                    Product Overview
+                    Our Target Buyers
                 </h1>
             </div>
 
         </div>
 
-        <div class="grid grid-cols-3 gap-30 mt-40 bg-cyan-400">
-            {{-- image --}}
-            <div class="relative w-[247px] h-[247px] overflow-hidden">
-                <img src="{{ asset('images/herosection.jpg') }}" class="w-full h-full object-cover">
+        <div class="text-white flex flex-col md:flex-row items-center gap-10 w-full max-w-6xl px-5">
 
-                <!-- TOP LEFT -->
+            {{-- text --}}
+            <div class="text-center md:text-left">
+
+                <p class="mb-2 text-[22px] md:text-[30px]">We serve:</p>
+
+                <ul class="list-disc pl-5 space-y-1 text-[16px] md:text-[20px] text-left">
+                    <li>Importers &amp; Distributors</li>
+                    <li>Supermarkets &amp; Retail Chains</li>
+                    <li>F&amp;B brands (coffee, bubble tea, restaurants)</li>
+                    <li>Eco-friendly product wholesalers</li>
+                </ul>
+
+            </div>
+
+            {{-- images --}}
+            <div class="w-full flex justify-center">
+
+                <div>
+
+                    {{-- ROW 1 --}}
+                    <div class="grid grid-cols-2 gap-4 max-w-3xl">
+
+                        <div>
+                            <img src="{{ asset('images/herosection.jpg') }}"
+                                class="w-full max-w-[268px] h-auto object-cover">
+                        </div>
+
+                        <div class="flex items-end">
+                            <img src="{{ asset('images/herosection.jpg') }}"
+                                class="w-full max-w-[188px] h-auto object-cover">
+                        </div>
+
+                    </div>
+
+                    {{-- ROW 2 --}}
+                    <div class="grid grid-cols-2 gap-4 max-w-3xl pt-5">
+
+                        <div class="flex justify-end">
+                            <img src="{{ asset('images/herosection.jpg') }}"
+                                class="w-full max-w-[188px] h-auto object-cover">
+                        </div>
+
+                        <div>
+                            <img src="{{ asset('images/herosection.jpg') }}"
+                                class="w-full max-w-[273px] h-auto object-cover">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    {{-- product overview --}}
+    <div class="my-20 relative flex items-center justify-center" x-data="productOverview({
+        products: @js($product),
+        main: @js($main)
+    })">
+
+        {{-- TITLE --}}
+        <div class="absolute top-0 right-0 w-2/3 md:w-1/3 overflow-hidden">
+            <div class="absolute inset-0 bg-[#ED1C24] [clip-path:polygon(0_0,100%_0,90%_100%,0_100%)] scale-x-[-1]"></div>
+
+            <div class="relative z-10 px-4 md:px-6 py-3 flex justify-start md:justify-center">
+                <h1 class="text-lg md:text-2xl font-bold text-white capitalize">
+                    Product Overview
+                </h1>
+            </div>
+        </div>
+
+        {{-- GRID --}}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-40 px-2">
+
+            {{-- IMAGE --}}
+            <div class="relative w-[247px] h-[247px] overflow-hidden mx-auto">
+                <img :src="currentImage" class="w-full h-full object-cover">
+
                 <div class="absolute top-0 left-0 w-[120px] h-5">
                     <div class="w-full h-full bg-[#ED1C24]" style="clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);">
                     </div>
                 </div>
 
-                <!-- BOTTOM RIGHT -->
                 <div class="absolute bottom-0 right-0 w-[120px] h-5">
                     <div class="w-full h-full bg-[#ED1C24]" style="clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%);">
                     </div>
                 </div>
             </div>
-            {{-- Product Specifications --}}
+
+            {{-- SPEC --}}
             <div>
-                <p class="text-[30px]">Product Specifications</p>
+                <p class="text-[30px] mb-5">Product Specifications</p>
+
+                {{-- SIZE --}}
+                <div class="mb-4">
+                    <p class="mb-2">Sizes:</p>
+
+                    <template x-for="size in sizes" :key="size">
+                        <span @click="selectSize(size)" class="px-3 py-1 border rounded-full cursor-pointer mr-2"
+                            :class="selectedSize === size ?
+                                'bg-[#ED1C24] text-white border-[#ED1C24]' :
+                                'border-gray-300'">
+                            <span x-text="size"></span>
+                        </span>
+                    </template>
+                </div>
+
+                {{-- COLOR --}}
+                <div>
+                    <p class="mb-2">Colors:</p>
+
+                    <template x-for="color in colors" :key="color">
+                        <span @click="selectColor(color)"
+                            class="px-3 py-1 border rounded-full cursor-pointer mr-2 capitalize"
+                            :style="selectedColor === color ?
+                                (color.toLowerCase() === 'white' ?
+                                    'background:black; color:white; border-color:black' :
+                                    'background:' + color + '; color:white; border-color:' + color) :
+                                (color.toLowerCase() === 'white' ?
+                                    'border-color:#ccc; background:white; color:black' :
+                                    'border-color:#ccc')">
+                            <span x-text="color"></span>
+                        </span>
+                    </template>
+                </div>
             </div>
-            {{-- Rice-Flour Straws --}}
+
+            {{-- DESCRIPTION --}}
             <div>
-                <p class="text-[30px]">Rice-Flour Straws</p>
+                <p class="text-[30px] mb-5">Rice-Flour Straws</p>
+
+                <div>
+                    100% biodegradable<br />
+                    Food-grade & safe<br />
+                    Strong in hot & cold drinks<br />
+                    No taste impact
+                </div>
             </div>
+
         </div>
     </div>
 
@@ -222,127 +267,121 @@
     </div>
 
     <!-- BACKGROUND CARD -->
-    <div class="relative h-[400px] mt-34 overflow-hidden">
+<div class="relative mt-20 md:mt-32 py-16 md:py-20 overflow-hidden">
 
-        <!-- BLURRED BACKGROUND IMAGE -->
-        <div class="absolute inset-0 bg-cover bg-center blur-sm scale-110"
-            style="background-image: url('{{ asset('images/herosection.jpg') }}');">
-        </div>
+    <!-- BLURRED BACKGROUND IMAGE -->
+    <div class="absolute inset-0 bg-cover bg-center blur-sm scale-110"
+         style="background-image: url('{{ asset('images/herosection.jpg') }}');">
+    </div>
 
-        <!-- DARK OVERLAY -->
-        <div class="absolute inset-0 bg-[#0B0B54E5]"></div>
+    <!-- DARK OVERLAY -->
+    <div class="absolute inset-0 bg-[#0B0B54E5]"></div>
 
-        <!-- CONTENT -->
-        <div class="relative z-10 h-full flex items-center px-10">
+    <!-- CONTENT -->
+    <div class="relative z-10 px-5 md:px-10">
+        <div class="container mx-auto">
 
-            <div class="grid grid-cols-3 gap-10 container mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-16">
 
                 {{-- 1 --}}
                 <div class="flex flex-col items-center">
-                    <!-- LEFT -->
-                    <div>
-                        <p class="text-red-500 text-[50px]">01</p>
+                    <div class="mb-3">
+                        <p class="text-red-500 text-5xl md:text-[50px] font-bold">01</p>
                     </div>
-
-                    <!-- CENTER -->
-                    <div class="text-white">
-                        <h2 class="font-bold mb-4 text-[20px] text-center">Direct manufacturer<br /> (no middleman)</h2>
+                    <div class="text-white text-center">
+                        <h2 class="font-bold text-lg md:text-[20px] leading-tight">
+                            Direct manufacturer<br>(no middleman)
+                        </h2>
                     </div>
                 </div>
 
                 {{-- 2 --}}
                 <div class="flex flex-col items-center">
-                    <!-- LEFT -->
-                    <div>
-                        <p class="text-red-500 text-[50px]">02</p>
+                    <div class="mb-3">
+                        <p class="text-red-500 text-5xl md:text-[50px] font-bold">02</p>
                     </div>
-
-                    <!-- CENTER -->
-                    <div class="text-white">
-                        <h2 class="font-bold mb-4 text-[20px] text-center">Competitive factory pricing</h2>
+                    <div class="text-white text-center">
+                        <h2 class="font-bold text-lg md:text-[20px] leading-tight">
+                            Competitive factory pricing
+                        </h2>
                     </div>
                 </div>
 
                 {{-- 3 --}}
                 <div class="flex flex-col items-center">
-                    <!-- LEFT -->
-                    <div>
-                        <p class="text-red-500 text-[50px]">03</p>
+                    <div class="mb-3">
+                        <p class="text-red-500 text-5xl md:text-[50px] font-bold">03</p>
                     </div>
-
-                    <!-- CENTER -->
-                    <div class="text-white">
-                        <h2 class="font-bold mb-4 text-[20px] text-center">Reliable production capacity</h2>
+                    <div class="text-white text-center">
+                        <h2 class="font-bold text-lg md:text-[20px] leading-tight">
+                            Reliable production capacity
+                        </h2>
                     </div>
                 </div>
 
                 {{-- 4 --}}
                 <div class="flex flex-col items-center">
-                    <!-- LEFT -->
-                    <div>
-                        <p class="text-red-500 text-[50px]">04</p>
+                    <div class="mb-3">
+                        <p class="text-red-500 text-5xl md:text-[50px] font-bold">04</p>
                     </div>
-
-                    <!-- CENTER -->
-                    <div class="text-white">
-                        <h2 class="font-bold mb-4 text-[20px] text-center">Export experience <br />(containers shipped)</h2>
+                    <div class="text-white text-center">
+                        <h2 class="font-bold text-lg md:text-[20px] leading-tight">
+                            Export experience <br>(containers shipped)
+                        </h2>
                     </div>
                 </div>
 
                 {{-- 5 --}}
                 <div class="flex flex-col items-center">
-                    <!-- LEFT -->
-                    <div>
-                        <p class="text-red-500 text-[50px]">05</p>
+                    <div class="mb-3">
+                        <p class="text-red-500 text-5xl md:text-[50px] font-bold">05</p>
                     </div>
-
-                    <!-- CENTER -->
-                    <div class="text-white">
-                        <h2 class="font-bold mb-4 text-[20px] text-center">OEM / Private label available</h2>
+                    <div class="text-white text-center">
+                        <h2 class="font-bold text-lg md:text-[20px] leading-tight">
+                            OEM / Private label available
+                        </h2>
                     </div>
                 </div>
 
                 {{-- 6 --}}
                 <div class="flex flex-col items-center">
-                    <!-- LEFT -->
-                    <div>
-                        <p class="text-red-500 text-[50px]">06</p>
+                    <div class="mb-3">
+                        <p class="text-red-500 text-5xl md:text-[50px] font-bold">06</p>
                     </div>
-
-                    <!-- CENTER -->
-                    <div class="text-white">
-                        <h2 class="font-bold mb-4 text-[20px] text-center">ISO & HACCP standards</h2>
+                    <div class="text-white text-center">
+                        <h2 class="font-bold text-lg md:text-[20px] leading-tight">
+                            ISO & HACCP standards
+                        </h2>
                     </div>
                 </div>
 
             </div>
 
         </div>
-
     </div>
+</div>
 
     {{-- Production & Quality --}}
-    <div class=" relative">
-        <div class="absolute top-0  right-0 w-2/3 md:w-1/3 overflow-hidden">
+    <div class="relative overflow-x-hidden my-20">
+
+        <div class="absolute top-0 right-0 w-2/3 md:w-1/3 overflow-hidden">
             <!-- mirrored background -->
-            <div class="absolute inset-0 bg-[#ED1C24] [clip-path:polygon(10%_0,100%_0,100%_100%,0_100%)] ">
-            </div>
+            <div class="absolute inset-0 bg-[#ED1C24] [clip-path:polygon(10%_0,100%_0,100%_100%,0_100%)]"></div>
 
             <!-- normal content -->
             <div class="relative z-10 px-4 md:px-6 py-3 flex justify-start md:justify-center">
-                <h1 class="text-lg md:text-2xl font-bold text-white capitalize">
+                <h1 class="text-lg md:text-2xl font-bold text-white capitalize break-words">
                     Production & Quality Assurance
                 </h1>
             </div>
-
         </div>
 
-        <div class="my-10 max-w-7xl container mx-auto grid grid-cols-4 gap-10 pt-30 pb-20">
-            {{-- Modern food-grade factory --}}
-            <div class="flex flex-col gap-2">
-                <div class="bg-[#0B0B54] w-full h-[264px] relative flex items-end justify-center">
+        <div
+            class="my-10 max-w-7xl container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10 pt-30 pb-20 px-4">
 
-                </div>
+            {{-- Card 1 --}}
+            <div class="flex flex-col gap-2">
+                <div class="bg-[#0B0B54] w-full h-[264px] relative flex items-end justify-center"></div>
                 <div class="bg-[#0B0B54] flex items-center justify-center py-3">
                     <p class="text-white text-center">
                         Modern food-grade<br /> factory
@@ -350,11 +389,9 @@
                 </div>
             </div>
 
-            {{-- Strict hygiene control --}}
+            {{-- Card 2 --}}
             <div class="flex flex-col gap-2">
-                <div class="bg-[#0B0B54] w-full h-[264px] relative flex items-end justify-center">
-
-                </div>
+                <div class="bg-[#0B0B54] w-full h-[264px] relative flex items-end justify-center"></div>
                 <div class="bg-[#0B0B54] flex items-center justify-center py-3">
                     <p class="text-white text-center">
                         Strict hygiene<br /> control
@@ -362,11 +399,9 @@
                 </div>
             </div>
 
-            {{-- International compliance --}}
+            {{-- Card 3 --}}
             <div class="flex flex-col gap-2">
-                <div class="bg-[#0B0B54] w-full h-[264px] relative flex items-end justify-center">
-
-                </div>
+                <div class="bg-[#0B0B54] w-full h-[264px] relative flex items-end justify-center"></div>
                 <div class="bg-[#0B0B54] flex items-center justify-center py-3">
                     <p class="text-white text-center">
                         International<br /> compliance
@@ -374,11 +409,9 @@
                 </div>
             </div>
 
-            {{-- Quality inspection before shipment --}}
+            {{-- Card 4 --}}
             <div class="flex flex-col gap-2">
-                <div class="bg-[#0B0B54] w-full h-[264px] relative flex items-end justify-center">
-
-                </div>
+                <div class="bg-[#0B0B54] w-full h-[264px] relative flex items-end justify-center"></div>
                 <div class="bg-[#0B0B54] flex items-center justify-center py-3">
                     <p class="text-white text-center">
                         Quality inspection<br /> before shipment
@@ -390,7 +423,7 @@
     </div>
 
     {{-- market we serve --}}
-    <div class=" relative">
+    <div class="relative">
 
         <!-- SECTION TITLE -->
         <div class="absolute top-0 left-0 w-2/3 md:w-1/3 overflow-hidden">
@@ -407,26 +440,57 @@
 
         </div>
 
-        <div class="flex items-center justify-around ">
-            <div>
+        {{-- CONTENT --}}
+        <div
+            class="container mx-auto
+        flex flex-col lg:flex-row
+        items-center justify-around
+        gap-10 lg:gap-16
+        px-5
+        pt-24 sm:pt-28 lg:pt-32
+        pb-10">
+
+            {{-- LEFT TEXT --}}
+            <div class="w-full lg:w-auto text-center lg:text-left">
+
                 {{-- cambodia --}}
                 <div>
-                    <p class="text-[#ED1C24]">Cambodia</p>
-                    <p>Cafes, Hotels, Supermarkets</p>
+                    <p class="text-[#ED1C24] text-lg md:text-xl font-semibold">
+                        Cambodia
+                    </p>
+
+                    <p class="text-sm md:text-base">
+                        Cafes, Hotels, Supermarkets
+                    </p>
                 </div>
-                {{-- cambodia --}}
-                <div class="pt-10">
-                    <p class="text-[#ED1C24]">International</p>
-                    <p>(Australia, Asia, Europe,
-                        Global Buyers)</p>
+
+                {{-- international --}}
+                <div class="pt-8 md:pt-10">
+                    <p class="text-[#ED1C24] text-lg md:text-xl font-semibold">
+                        International
+                    </p>
+
+                    <p class="text-sm md:text-base leading-relaxed">
+                        (Australia, Asia, Europe,
+                        Global Buyers)
+                    </p>
                 </div>
+
             </div>
-            <img src="{{ asset('images/map.png') }}" alt="map" class="w-2/3 h-auto">
+
+            {{-- MAP --}}
+            <div class="w-full lg:w-2/3 flex justify-center">
+
+                <img src="{{ asset('images/map.png') }}" alt="map"
+                    class="w-full max-w-[900px] h-auto object-contain">
+
+            </div>
+
         </div>
     </div>
 
     {{-- form --}}
-    <div class="max-w-7xl container mx-auto my-20">
+    <div class="max-w-7xl container mx-auto my-20 px-2">
         <p class="text-center text-red-500 text-[40px] mb-10 font-bold">Form</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -454,29 +518,28 @@
     </div>
 
     {{-- gallery --}}
-    <div class="my-20">
+    <div class="my-20 px-4">
 
         <p class="text-[40px] text-red-500 text-center font-bold mb-10">
             Gallery
         </p>
 
-        <div class="grid grid-cols-4 gap-10 container mx-auto max-w-7xl">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-10 container mx-auto max-w-7xl">
 
             @foreach ($galleries as $gallery)
                 @php
-                    // if images is JSON array
                     $images = is_string($gallery->images) ? json_decode($gallery->images, true) : $gallery->images;
                 @endphp
 
                 @if (is_array($images))
                     @foreach ($images as $img)
-                        <div class="w-[292px] h-[292px] overflow-hidden rounded-lg">
+                        <div class="w-full aspect-square overflow-hidden rounded-lg">
                             <img src="{{ asset('storage/' . $img) }}" class="w-full h-full object-cover"
                                 alt="gallery image">
                         </div>
                     @endforeach
                 @else
-                    <div class="w-[292px] h-[292px] overflow-hidden rounded-lg">
+                    <div class="w-full aspect-square overflow-hidden rounded-lg">
                         <img src="{{ asset('storage/' . $gallery->images) }}" class="w-full h-full object-cover"
                             alt="gallery image">
                     </div>
@@ -490,11 +553,11 @@
     <div class="my-20 ">
         <p class="text-[40px] text-red-500 text-center font-bold mb-10">FAQ (Buyer-Focused)</p>
 
-        <div class="max-w-7xl container  mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="max-w-7xl container  mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-2">
             @foreach ($faq as $item)
                 <div class="faq-item border rounded-md p-4 bg-[#0B0B54] text-white self-start">
                     <button class="faq-btn w-full flex justify-between font-semibold">
-                        {{ $item->title}}
+                        {{ $item->title }}
                         <span>+</span>
                     </button>
                     <div class="faq-content hidden mt-3">
@@ -558,4 +621,59 @@
         });
 
     });
+
+    function productOverview(data) {
+
+        return {
+
+            products: data.products,
+            selected: data.main ?? data.products[0],
+            selectedSize: (data.main ?? data.products[0])?.size,
+            selectedColor: JSON.parse((data.main ?? data.products[0])?.color || '[""]')[0],
+
+            get sizes() {
+                return [...new Set(this.products.map(p => p.size))];
+            },
+
+            get colors() {
+                return this.products
+                    .filter(p => p.size === this.selectedSize)
+                    .map(p => JSON.parse(p.color)[0]);
+            },
+
+            get currentImage() {
+                let images = JSON.parse(this.selected.images || '[]');
+
+                return images.length ?
+                    '/storage/' + images[0] :
+                    '';
+            },
+
+            selectSize(size) {
+
+                this.selectedSize = size;
+
+                let matched = this.products.find(p => p.size === size);
+
+                if (matched) {
+                    this.selected = matched;
+                    this.selectedColor = JSON.parse(matched.color)[0];
+                }
+            },
+
+            selectColor(color) {
+
+                this.selectedColor = color;
+
+                let matched = this.products.find(p =>
+                    p.size === this.selectedSize &&
+                    JSON.parse(p.color)[0] === color
+                );
+
+                if (matched) {
+                    this.selected = matched;
+                }
+            }
+        }
+    }
 </script>

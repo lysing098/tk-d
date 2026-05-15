@@ -97,7 +97,7 @@
                 {{-- CONTENT --}}
                 <div class="bg-[#0B0B54] text-white p-6 flex-1 flex flex-col">
 
-                    <h3 class="text-xl font-semibold text-center mb-5">
+                    <h3 class="text-xl font-semibold mb-5">
                         Manufacturing Process
                     </h3>
 
@@ -109,6 +109,84 @@
                         <p>• Daily production (add your number)</p>
                         <p>• Export-ready logistics</p>
                         <p>• International compliance</p>
+                    </div>
+
+                </div>
+            </div>
+
+            {{-- CARD 2--}}
+            <div
+                class="bg-white shadow-lg overflow-hidden flex flex-col gap-4 hover:-translate-y-1 transition duration-300">
+
+                {{-- IMAGE --}}
+                <div class="bg-[#0B0B54] h-[260px] relative">
+                    {{-- image here --}}
+                    {{-- <img src="" class="w-full h-full object-cover"> --}}
+                </div>
+
+                {{-- CONTENT --}}
+                <div class="bg-[#0B0B54] text-white p-6 flex-1 flex flex-col">
+
+                    <h3 class="text-xl font-semibold mb-5">
+                        Customers Relationship & Trainings
+                    </h3>
+
+                    <div class="space-y-2 text-sm leading-relaxed">
+                        <p>• Staff Training</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+            {{-- CARD 3--}}
+            <div
+                class="bg-white shadow-lg overflow-hidden flex flex-col gap-4 hover:-translate-y-1 transition duration-300">
+
+                {{-- IMAGE --}}
+                <div class="bg-[#0B0B54] h-[260px] relative">
+                    {{-- image here --}}
+                    {{-- <img src="" class="w-full h-full object-cover"> --}}
+                </div>
+
+                {{-- CONTENT --}}
+                <div class="bg-[#0B0B54] text-white p-6 flex-1 flex flex-col">
+
+                    <h3 class="text-xl font-semibold mb-5">
+                        Export & Distribution
+                    </h3>
+
+                    <div class="space-y-2 text-sm leading-relaxed">
+                        <p>• Local delivery</p>
+                        <p>• Container export (Australia example)</p>
+                        <p>• Global distribution network</p>
+                    </div>
+
+                </div>
+            </div>
+
+            {{-- CARD 4 --}}
+            <div
+                class="bg-white shadow-lg overflow-hidden flex flex-col gap-4 hover:-translate-y-1 transition duration-300">
+
+                {{-- IMAGE --}}
+                <div class="bg-[#0B0B54] h-[260px] relative">
+                    {{-- image here --}}
+                    {{-- <img src="" class="w-full h-full object-cover"> --}}
+                </div>
+
+                {{-- CONTENT --}}
+                <div class="bg-[#0B0B54] text-white p-6 flex-1 flex flex-col">
+
+                    <h3 class="text-xl font-semibold mb-5">
+                        MCSR (Social Responsibility)
+                    </h3>
+
+                    <div class="space-y-2 text-sm leading-relaxed">
+                        <p>• Support farmers</p>
+                        <p>• Job creation</p>
+                        <p>• Environmental protection</p>
+                        <p>• Sustainable manufacturing</p>
                     </div>
 
                 </div>

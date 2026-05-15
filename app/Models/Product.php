@@ -9,11 +9,11 @@ class Product extends Model
 
     protected $fillable = [
         'title',
-        'description',
+        // 'description',
         'size',
         'color',
         'images',
-        'order'
+        // 'order'
     ];
 
     // Do NOT cast images to array — we manage JSON manually

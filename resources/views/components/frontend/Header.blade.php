@@ -45,11 +45,11 @@
 
         <a href="/" @click="open=false" class="block hover:text-[#ED1C24]">home</a>
         <a href="/about-us" @click="open=false" class="block hover:text-[#ED1C24]">about us</a>
-        <a href="/our-trading-products" @click="open=false" class="block hover:text-[#ED1C24]">products</a>
+        <a href="/our-trading-products" @click="open=false" class="block hover:text-[#ED1C24]">our trading products</a>
         <a href="/export" @click="open=false" class="block hover:text-[#ED1C24]">export</a>
         <a href="/blog" @click="open=false" class="block hover:text-[#ED1C24]">blog</a>
-        <a href="/activities" @click="open=false" class="block hover:text-[#ED1C24]">activities</a>
-        <a href="/contact-us" @click="open=false" class="block hover:text-[#ED1C24]">contact</a>
+        <a href="/business-activities" @click="open=false" class="block hover:text-[#ED1C24]">business activities</a>
+        <a href="/contact-us" @click="open=false" class="block hover:text-[#ED1C24]">contact us</a>
 
     </div>
 

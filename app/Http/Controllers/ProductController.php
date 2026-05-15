@@ -15,7 +15,8 @@ class ProductController extends Controller
 
         $products = Product::when($search, function ($query) use ($search) {
             $query->where('title', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%");
+                  ->orWhere('color', 'like', "%{$search}%")
+                  ->orWhere('size', 'like', "%{$search}%");
         })->latest()->get();
 
         return view('pages.backend.ProductPage', compact('products'));
@@ -23,33 +24,42 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+            // CHECK DUPLICATE FIRST
+        $exists = Product::where('title', $request->title)
+            ->where('size', $request->size)
+            ->whereJsonContains('color', $request->color)
+            ->exists();
+
+        if ($exists) {
+            return response()->json([
+                'success' => false,
+                'message' => 'This product already exists with same title, size and color.'
+            ], 409);
+        }
+
         $request->validate([
-            'title' => [
-                'required',
-                Rule::unique('tbl_product')->where(function ($query) use ($request) {
-                    return $query->where('size', $request->size)
-                                ->where('color', $request->color);
-                })
-            ],
-            'description' => 'nullable|string',
+            'title' => 'required|string|max:255',
+            // 'description' => 'nullable|string',
             'size' => 'required|string',
             'color' => 'required|string',
-            'order' => 'required|integer|unique:tbl_product,order',
+            // 'order' => 'required|integer|unique:tbl_product,order',
             'images' => 'required|array|min:1',
-            'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:2048',
+            'images.*' => 'image|mimes:jpg,jpeg,png,webp',
         ]);
 
         $paths = [];
 
-        foreach ($request->file('images') as $file) {
-            $paths[] = $file->store('products', 'public');
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $paths[] = $file->store('products', 'public');
+            }
         }
 
         Product::create([
             'title' => $request->title,
-            'description' => $request->description,
+            // 'description' => $request->description,
             'size' => $request->size,
-            'order' => $request->order,
+            // 'order' => $request->order,
             'color' => json_encode([$request->color]),
             'images' => json_encode($paths),
         ]);
@@ -64,27 +74,49 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
+        // CHECK DUPLICATE EXCEPT CURRENT PRODUCT
+        $exists = Product::where('title', $request->title)
+            ->where('size', $request->size)
+            ->whereJsonContains('color', $request->color)
+            ->where('id', '!=', $product->id)
+            ->exists();
+
+        if ($exists) {
+            return response()->json([
+                'success' => false,
+                'message' => 'This product already exists with same title, size and color.'
+            ], 409);
+        }
+
         $request->validate([
-            'title' => 'required|string|max:255|unique:tbl_product,title,' . $product->id,
+            'title' => 'required|string|max:255',
             'size' => 'required|string',
             'color' => 'required|string',
-            'order' => 'required|integer|unique:tbl_product,order,' . $product->id,
-            'images.*' => 'image|mimes:jpg,jpeg,png,webp|max:2048',
+            'images.*' => 'image|mimes:jpg,jpeg,png,webp',
         ]);
 
-        $paths = json_decode($product->images, true) ?? [];
+        // KEEP EXISTING IMAGES
+        $paths = $request->existing_images ?? [];
 
+        // ADD NEW IMAGES
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $file) {
                 $paths[] = $file->store('products', 'public');
             }
         }
 
+        // DELETE REMOVED IMAGES
+        $oldImages = json_decode($product->images, true) ?? [];
+
+        foreach ($oldImages as $oldImg) {
+            if (!in_array($oldImg, $paths)) {
+                Storage::disk('public')->delete($oldImg);
+            }
+        }
+
         $product->update([
             'title' => $request->title,
-            'description' => $request->description,
             'size' => $request->size,
-            'order' => $request->order,
             'color' => json_encode([$request->color]),
             'images' => json_encode($paths),
         ]);

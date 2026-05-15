@@ -2,38 +2,31 @@
 
 @section('content')
     {{-- hero section --}}
-    <div id="tabsRoot">
+    <div id="tabsRoot relative">
 
         <!-- HERO -->
-        <div class="h-[93vh] bg-cover bg-center text-white relative"
+        <div class="min-h-[85vh] lg:min-h-[93vh] bg-cover bg-center text-white relative flex items-center"
             style="background-image: url('{{ asset('storage/' . $hero->background_image) }}');">
 
             <div class="absolute inset-0 bg-black/40"></div>
 
             <!-- HERO CONTENT -->
-            <div class="container mx-auto px-5 flex items-center h-full relative z-10">
-
-                <div class="w-full lg:w-1/2 flex flex-col gap-5 text-center md:text-left">
-
-                    <h2 class="text-xl sm:text-2xl md:text-4xl lg:text-[44px] font-bold">
+            <div class="container mx-auto px-5 relative z-10 pt-20 pb-10 lg:pt-0">
+                <div class="max-w-2xl lg:w-1/2 flex flex-col gap-5 text-center md:text-left mx-auto lg:mx-0">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-bold leading-tight">
                         {{ $hero->title }}
                     </h2>
-
-                    <p class="text-sm sm:text-base md:text-lg lg:text-[22px]">
+                    <p class="text-base sm:text-lg md:text-xl lg:text-[22px] leading-relaxed">
                         {{ $hero->sub_title }}
                     </p>
-
                 </div>
-
             </div>
 
             <!-- TABS -->
-            <div class="absolute bottom-[-50px] left-1/2 -translate-x-1/2 w-full max-w-5xl">
-
-                <div id="tabButtons" class="grid grid-cols-4 gap-6"></div>
-
+            <div class="absolute bottom-[-45px] md:bottom-[-55px] left-1/2 -translate-x-1/2 w-full max-w-5xl px-4 lg:px-0">
+                <div id="tabButtons" class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+                </div>
             </div>
-
         </div>
 
         <!-- CONTENT -->
@@ -50,15 +43,15 @@
     <!-- CTA SECTION -->
     <div class="mt-20 bg-[#0B0B54] text-white py-16 md:py-20 text-center relative overflow-hidden">
 
-    <h2 class="mx-auto max-w-4xl text-lg sm:text-xl md:text-2xl lg:text-[32px] font-bold mb-8 leading-relaxed px-4">
+        <h2 class="mx-auto max-w-4xl text-lg sm:text-xl md:text-2xl lg:text-[32px] font-bold mb-8 leading-relaxed px-4">
 
-        “From local agricultural resources to global markets,
-        TK&D transforms rice into sustainable solutions
-        that reduce plastic waste.”
+            “From local agricultural resources to global markets,
+            TK&D transforms rice into sustainable solutions
+            that reduce plastic waste.”
 
-    </h2>
+        </h2>
 
-</div>
+    </div>
 
     {{-- team --}}
     <div class="py-20 relative">
@@ -84,7 +77,7 @@
             {{-- FOUNDERS --}}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
 
-                @foreach ($teams->whereIn('role', ['Director','Founder', 'Co-Founder']) as $member)
+                @foreach ($teams->whereIn('role', ['Director', 'Founder', 'Co-Founder']) as $member)
                     <div class="text-center">
 
                         <div class="relative overflow-hidden">
@@ -116,7 +109,7 @@
             {{-- TEAM MEMBERS --}}
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
 
-                @foreach ($teams->whereNotIn('role', ['Founder', 'Co-Founder','Director'])->take(4) as $member)
+                @foreach ($teams->whereNotIn('role', ['Founder', 'Co-Founder', 'Director'])->take(4) as $member)
                     <div class="text-center">
 
                         <div class="relative overflow-hidden">
@@ -148,7 +141,7 @@
             {{-- LAST ROW --}}
             <div class="flex flex-wrap justify-center gap-6 mt-10">
 
-                @foreach ($teams->whereNotIn('role', ['Founder', 'Co-Founder','Director'])->skip(4) as $member)
+                @foreach ($teams->whereNotIn('role', ['Founder', 'Co-Founder', 'Director'])->skip(4) as $member)
                     <div class="w-full sm:w-[300px] text-center">
 
                         <div class="relative overflow-hidden">

@@ -325,7 +325,7 @@
                         <div class="flex flex-col gap-3 items-center lg:items-start text-center lg:text-left">
 
                             <img src="{{ asset('icons/biodegradable.png') }}"
-                                class="w-10 h-10 lg:w-12 lg:h-12 object-contain">
+                                class="w-10 h-10 lg:w-12 lg:h-12 object-contain filter brightness-0 invert">
 
                             <div>
                                 <p class="text-base lg:text-[19px] font-bold">
@@ -338,7 +338,7 @@
                         {{-- Competitive pricing --}}
                         <div class="flex flex-col gap-3 items-center lg:items-start text-center lg:text-left">
 
-                            <img src="{{ asset('icons/badge.png') }}" class="w-10 h-10 lg:w-12 lg:h-12 object-contain">
+                            <img src="{{ asset('icons/badge.png') }}" class="w-10 h-10 lg:w-12 lg:h-12 object-contain filter brightness-0 invert">
 
                             <div>
                                 <p class="text-base lg:text-[19px] font-bold">
@@ -352,7 +352,7 @@
                         <div class="flex flex-col gap-3 items-center lg:items-start text-center lg:text-left">
 
                             <img src="{{ asset('icons/development.png') }}"
-                                class="w-10 h-10 lg:w-12 lg:h-12 object-contain">
+                                class="w-10 h-10 lg:w-12 lg:h-12 object-contain filter brightness-0 invert">
 
                             <div>
                                 <p class="text-base lg:text-[19px] font-bold">
@@ -366,7 +366,7 @@
                         <div class="flex flex-col gap-3 items-center lg:items-start text-center lg:text-left">
 
                             <img src="{{ asset('icons/security (1).png') }}"
-                                class="w-10 h-10 lg:w-12 lg:h-12 object-contain">
+                                class="w-10 h-10 lg:w-12 lg:h-12 object-contain filter brightness-0 invert">
 
                             <div>
                                 <p class="text-base lg:text-[19px] font-bold">
@@ -380,7 +380,7 @@
                         <div class="flex flex-col gap-3 items-center lg:items-start text-center lg:text-left">
 
                             <img src="{{ asset('icons/global-shipping.png') }}"
-                                class="w-10 h-10 lg:w-12 lg:h-12 object-contain">
+                                class="w-10 h-10 lg:w-12 lg:h-12 object-contain filter brightness-0 invert">
 
                             <div>
                                 <p class="text-base lg:text-[19px] font-bold">
