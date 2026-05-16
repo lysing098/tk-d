@@ -69,7 +69,7 @@
                     @endif
 
                     @if ($hero->btn_secondary_text)
-                        <a href={{ $hero->btn_secondary_link }}
+                        <a href="{{ route('export.download', $export->id) }}"
                             class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
                           bg-white text-[#ED1C24] font-semibold text-center capitalize">
                             {{ $hero->btn_secondary_text }}
@@ -267,99 +267,99 @@
     </div>
 
     <!-- BACKGROUND CARD -->
-<div class="relative mt-20 md:mt-32 py-16 md:py-20 overflow-hidden">
+    <div class="relative mt-20 md:mt-32 py-16 md:py-20 overflow-hidden">
 
-    <!-- BLURRED BACKGROUND IMAGE -->
-    <div class="absolute inset-0 bg-cover bg-center blur-sm scale-110"
-         style="background-image: url('{{ asset('images/herosection.jpg') }}');">
-    </div>
+        <!-- BLURRED BACKGROUND IMAGE -->
+        <div class="absolute inset-0 bg-cover bg-center blur-sm scale-110"
+            style="background-image: url('{{ asset('images/herosection.jpg') }}');">
+        </div>
 
-    <!-- DARK OVERLAY -->
-    <div class="absolute inset-0 bg-[#0B0B54E5]"></div>
+        <!-- DARK OVERLAY -->
+        <div class="absolute inset-0 bg-[#0B0B54E5]"></div>
 
-    <!-- CONTENT -->
-    <div class="relative z-10 px-5 md:px-10">
-        <div class="container mx-auto">
+        <!-- CONTENT -->
+        <div class="relative z-10 px-5 md:px-10">
+            <div class="container mx-auto">
 
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-16">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12 md:gap-y-16">
 
-                {{-- 1 --}}
-                <div class="flex flex-col items-center">
-                    <div class="mb-3">
-                        <p class="text-red-500 text-5xl md:text-[50px] font-bold">01</p>
+                    {{-- 1 --}}
+                    <div class="flex flex-col items-center">
+                        <div class="mb-3">
+                            <p class="text-red-500 text-5xl md:text-[50px] font-bold">01</p>
+                        </div>
+                        <div class="text-white text-center">
+                            <h2 class="font-bold text-lg md:text-[20px] leading-tight">
+                                Direct manufacturer<br>(no middleman)
+                            </h2>
+                        </div>
                     </div>
-                    <div class="text-white text-center">
-                        <h2 class="font-bold text-lg md:text-[20px] leading-tight">
-                            Direct manufacturer<br>(no middleman)
-                        </h2>
-                    </div>
-                </div>
 
-                {{-- 2 --}}
-                <div class="flex flex-col items-center">
-                    <div class="mb-3">
-                        <p class="text-red-500 text-5xl md:text-[50px] font-bold">02</p>
+                    {{-- 2 --}}
+                    <div class="flex flex-col items-center">
+                        <div class="mb-3">
+                            <p class="text-red-500 text-5xl md:text-[50px] font-bold">02</p>
+                        </div>
+                        <div class="text-white text-center">
+                            <h2 class="font-bold text-lg md:text-[20px] leading-tight">
+                                Competitive factory pricing
+                            </h2>
+                        </div>
                     </div>
-                    <div class="text-white text-center">
-                        <h2 class="font-bold text-lg md:text-[20px] leading-tight">
-                            Competitive factory pricing
-                        </h2>
-                    </div>
-                </div>
 
-                {{-- 3 --}}
-                <div class="flex flex-col items-center">
-                    <div class="mb-3">
-                        <p class="text-red-500 text-5xl md:text-[50px] font-bold">03</p>
+                    {{-- 3 --}}
+                    <div class="flex flex-col items-center">
+                        <div class="mb-3">
+                            <p class="text-red-500 text-5xl md:text-[50px] font-bold">03</p>
+                        </div>
+                        <div class="text-white text-center">
+                            <h2 class="font-bold text-lg md:text-[20px] leading-tight">
+                                Reliable production capacity
+                            </h2>
+                        </div>
                     </div>
-                    <div class="text-white text-center">
-                        <h2 class="font-bold text-lg md:text-[20px] leading-tight">
-                            Reliable production capacity
-                        </h2>
-                    </div>
-                </div>
 
-                {{-- 4 --}}
-                <div class="flex flex-col items-center">
-                    <div class="mb-3">
-                        <p class="text-red-500 text-5xl md:text-[50px] font-bold">04</p>
+                    {{-- 4 --}}
+                    <div class="flex flex-col items-center">
+                        <div class="mb-3">
+                            <p class="text-red-500 text-5xl md:text-[50px] font-bold">04</p>
+                        </div>
+                        <div class="text-white text-center">
+                            <h2 class="font-bold text-lg md:text-[20px] leading-tight">
+                                Export experience <br>(containers shipped)
+                            </h2>
+                        </div>
                     </div>
-                    <div class="text-white text-center">
-                        <h2 class="font-bold text-lg md:text-[20px] leading-tight">
-                            Export experience <br>(containers shipped)
-                        </h2>
-                    </div>
-                </div>
 
-                {{-- 5 --}}
-                <div class="flex flex-col items-center">
-                    <div class="mb-3">
-                        <p class="text-red-500 text-5xl md:text-[50px] font-bold">05</p>
+                    {{-- 5 --}}
+                    <div class="flex flex-col items-center">
+                        <div class="mb-3">
+                            <p class="text-red-500 text-5xl md:text-[50px] font-bold">05</p>
+                        </div>
+                        <div class="text-white text-center">
+                            <h2 class="font-bold text-lg md:text-[20px] leading-tight">
+                                OEM / Private label available
+                            </h2>
+                        </div>
                     </div>
-                    <div class="text-white text-center">
-                        <h2 class="font-bold text-lg md:text-[20px] leading-tight">
-                            OEM / Private label available
-                        </h2>
-                    </div>
-                </div>
 
-                {{-- 6 --}}
-                <div class="flex flex-col items-center">
-                    <div class="mb-3">
-                        <p class="text-red-500 text-5xl md:text-[50px] font-bold">06</p>
+                    {{-- 6 --}}
+                    <div class="flex flex-col items-center">
+                        <div class="mb-3">
+                            <p class="text-red-500 text-5xl md:text-[50px] font-bold">06</p>
+                        </div>
+                        <div class="text-white text-center">
+                            <h2 class="font-bold text-lg md:text-[20px] leading-tight">
+                                ISO & HACCP standards
+                            </h2>
+                        </div>
                     </div>
-                    <div class="text-white text-center">
-                        <h2 class="font-bold text-lg md:text-[20px] leading-tight">
-                            ISO & HACCP standards
-                        </h2>
-                    </div>
+
                 </div>
 
             </div>
-
         </div>
     </div>
-</div>
 
     {{-- Production & Quality --}}
     <div class="relative overflow-x-hidden my-20">

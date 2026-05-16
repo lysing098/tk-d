@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\GalleryController;
@@ -16,11 +17,13 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TradingProductController;
 use App\Models\Certificate;
 use App\Models\Company;
+use App\Models\Export;
 use App\Models\Faq;
 use App\Models\Gallery;
 use App\Models\Herosection;
 use App\Models\Product;
 use App\Models\Team;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -45,6 +48,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/export', [ExportController::class, 'index'])->name('admin.export');
 
     Route::get('/business-activities', [ActivityController::class, 'index'])->name('admin.activity');
+
+    Route::get('/contact', [ContactController::class, 'index'])->name('admin.contact');
 
      // FAQ CRUD
     Route::post('/faq', [FAQController::class, 'store'])->name('faq.store');
@@ -85,6 +90,12 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::post('/company', [CompanyController::class, 'store'])->name('company.store');
     Route::put('/company/{id}', [CompanyController::class, 'update'])->name('company.update');
     Route::delete('/company/{id}', [CompanyController::class, 'destroy'])->name('company.delete');
+
+    //export
+    Route::post('/export',              [ExportController::class, 'store'])->name('export.store');
+    Route::put('/export/{id}',          [ExportController::class, 'update'])->name('export.update');
+    Route::delete('/export/{id}',       [ExportController::class, 'destroy'])->name('export.delete');
+    Route::get('/export/{id}/download', [ExportController::class, 'download'])->name('export.download');
 
 });
 Route::middleware('auth')->group(function () {
@@ -129,6 +140,7 @@ Route::get('/export', function() {
     $hero = Herosection::where('page','export')->first();
     $galleries = Gallery::get();
     $faq = Faq::where('page','export')->get();
+    $export = Export::first();
 
     $product = Product::where('title', 'Rice Flour Drinking Straws')->get();
     $main = $product->first();
@@ -138,7 +150,8 @@ Route::get('/export', function() {
         'galleries',
         'faq',
         'product',
-        'main'
+        'main',
+        'export'
     ));
 });
 
@@ -158,5 +171,12 @@ Route::get('/contact-us', function() {
     $hero = Herosection::where('page','home')->first();
     return view('pages.frontend.ContactUsPage',compact('hero'));
 });
+
+Route::get('/export/{id}/download', [ExportController::class, 'download'])->name('export.download');
+
+// contact
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+    Route::put('/contact/{id}', [ContactController::class, 'update'])->name('contact.update');
+    Route::delete('/contact/{id}', [ContactController::class, 'destroy'])->name('contact.delete');
 
 require __DIR__.'/auth.php';

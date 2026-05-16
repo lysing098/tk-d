@@ -8,5 +8,5 @@ class Contact extends Model
 {
     protected $table ='tbl_contact';
 
-    protected $fillable = ['fullname','company','country','email','whatsapp','product_id','qty','message'];
+    protected $fillable = ['fullname','company','country','email','whatsapp','product','qty','message'];
 }

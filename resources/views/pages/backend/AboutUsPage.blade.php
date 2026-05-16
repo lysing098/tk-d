@@ -33,7 +33,7 @@
         @endif
 
         {{-- ================= HERO SECTION ================= --}}
-        <div class="bg-gray-900 p-5 rounded-xl border border-gray-700">
+        <div class="bg-gray-900 p-5 rounded-xl border border-gray-700 overflow-x-auto">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-lg text-white">Hero Section</h2>
                 {{-- <button @click="openHeroCreate()" class="px-4 py-2 bg-green-500 text-white rounded-lg">
@@ -41,41 +41,43 @@
                 </button> --}}
             </div>
 
-            <table class="w-full text-sm text-left text-gray-300">
-                <thead class="text-gray-400 border-b border-gray-700">
-                    <tr>
-                        <th>Title</th>
-                        <th>Subtitle</th>
-                        <th>Page</th>
-                        <th>Button Primary</th>
-                        <th>Button Primary Link</th>
-                        <th>Button Secondary</th>
-                        <th>Button Secondary Link</th>
-                        <th>Image</th>
-                        <th class="text-right">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if ($hero)
-                        <tr class="border-b border-gray-800">
-                            <td>{{ Str::limit($hero->title, 20) }}</td>
-                            <td>{{ Str::limit($hero->sub_title, 20) }}</td>
-                            <td>{{ $hero->page }}</td>
-                            <td>{{ $hero->btn_primary_text }}</td>
-                            <td>{{ $hero->btn_primary_link }}</td>
-                            <td>{{ $hero->btn_secondary_text }}</td>
-                            <td>{{ $hero->btn_secondary_link }}</td>
-                            <td>
-                                <img src="{{ $hero->background_image ? asset('storage/' . $hero->background_image) : '' }}"
-                                    class="w-20 h-12 object-cover rounded">
-                            </td>
-                            <td class="text-right space-x-2">
-                                <button @click="openHeroEdit(@js($hero))"
-                                    class="px-3 py-1 bg-yellow-500 text-black rounded">
-                                    Edit
-                                </button>
+            <div class="w-full ">
+                <div class="min-w-[800px]">
+                    <table class="w-full text-sm text-left text-gray-300">
+                        <thead class="text-gray-400 border-b border-gray-700">
+                            <tr>
+                                <th>Title</th>
+                                <th>Subtitle</th>
+                                <th>Page</th>
+                                <th>Button Primary</th>
+                                <th>Button Primary Link</th>
+                                <th>Button Secondary</th>
+                                <th>Button Secondary Link</th>
+                                <th>Image</th>
+                                <th class="text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if ($hero)
+                                <tr class="border-b border-gray-800">
+                                    <td>{{ Str::limit($hero->title, 20) }}</td>
+                                    <td>{{ Str::limit($hero->sub_title, 20) }}</td>
+                                    <td>{{ $hero->page }}</td>
+                                    <td>{{ $hero->btn_primary_text }}</td>
+                                    <td>{{ $hero->btn_primary_link }}</td>
+                                    <td>{{ $hero->btn_secondary_text }}</td>
+                                    <td>{{ $hero->btn_secondary_link }}</td>
+                                    <td>
+                                        <img src="{{ $hero->background_image ? asset('storage/' . $hero->background_image) : '' }}"
+                                            class="w-20 h-12 object-cover rounded">
+                                    </td>
+                                    <td class="text-right space-x-2">
+                                        <button @click="openHeroEdit(@js($hero))"
+                                            class="px-3 py-1 bg-yellow-500 text-black rounded">
+                                            Edit
+                                        </button>
 
-                                {{-- <form x-data @submit.prevent="confirmDelete($el)" action="/admin/hero/{{ $hero->id }}"
+                                        {{-- <form x-data @submit.prevent="confirmDelete($el)" action="/admin/hero/{{ $hero->id }}"
                                     method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
@@ -83,15 +85,17 @@
                                         Delete
                                     </button>
                                 </form> --}}
-                            </td>
-                        </tr>
-                    @endif
-                </tbody>
-            </table>
+                                    </td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
         {{-- ================= TEAM SECTION ================= --}}
-        <div class="bg-gray-900 p-5 rounded-xl border border-gray-700">
+        <div class="bg-gray-900 p-5 rounded-xl border border-gray-700 overflow-x-auto">
 
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-lg text-white">Team Section</h2>
@@ -101,71 +105,76 @@
                 </button>
             </div>
 
-            <table class="w-full text-sm text-left text-gray-300">
+            <div class="w-full ">
+                <div class="min-w-[800px]">
+                    <table class="w-full text-sm text-left text-gray-300">
 
-                <thead class="text-gray-400 border-b border-gray-700">
-                    <tr>
-                        <th>Name</th>
-                        <th>Role</th>
-                        <th>Order</th>
-                        <th>Image</th>
-                        <th class="text-right">Action</th>
-                    </tr>
-                </thead>
+                        <thead class="text-gray-400 border-b border-gray-700">
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Order</th>
+                                <th>Image</th>
+                                <th class="text-right">Action</th>
+                            </tr>
+                        </thead>
 
-                <tbody>
+                        <tbody>
 
-                    @forelse ($teams as $team)
-                        <tr class="border-b border-gray-800">
+                            @forelse ($teams as $team)
+                                <tr class="border-b border-gray-800">
 
-                            <td>{{ $team->name }}</td>
+                                    <td>{{ $team->name }}</td>
 
-                            <td>{{ $team->role }}</td>
+                                    <td>{{ $team->role }}</td>
 
-                            <td>{{ $team->order }}</td>
+                                    <td>{{ $team->order }}</td>
 
-                            <td>
-                                <img src="{{ asset('storage/' . $team->image) }}" class="w-20 h-20 object-cover rounded">
-                            </td>
+                                    <td>
+                                        <img src="{{ asset('storage/' . $team->image) }}"
+                                            class="w-20 h-20 object-cover rounded">
+                                    </td>
 
-                            <td class="text-right space-x-2">
+                                    <td class="text-right space-x-2">
 
-                                <button @click="openteamEdit(@js($team))"
-                                    class="px-3 py-1 bg-yellow-500 text-black rounded">
-                                    Edit
-                                </button>
+                                        <button @click="openteamEdit(@js($team))"
+                                            class="px-3 py-1 bg-yellow-500 text-black rounded">
+                                            Edit
+                                        </button>
 
-                                <form x-data @submit.prevent="confirmDelete($el)" action="/admin/team/{{ $team->id }}"
-                                    method="POST" class="inline">
+                                        <form x-data @submit.prevent="confirmDelete($el)"
+                                            action="/admin/team/{{ $team->id }}" method="POST" class="inline">
 
-                                    @csrf
-                                    @method('DELETE')
+                                            @csrf
+                                            @method('DELETE')
 
-                                    <button class="px-3 py-1 bg-red-500 text-white rounded">
-                                        Delete
-                                    </button>
+                                            <button class="px-3 py-1 bg-red-500 text-white rounded">
+                                                Delete
+                                            </button>
 
-                                </form>
+                                        </form>
 
-                            </td>
+                                    </td>
 
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="4" class="text-center py-5 text-gray-400">
-                                No team found
-                            </td>
-                        </tr>
-                    @endforelse
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center py-5 text-gray-400">
+                                        No team found
+                                    </td>
+                                </tr>
+                            @endforelse
 
-                </tbody>
+                        </tbody>
 
-            </table>
+                    </table>
+                </div>
+            </div>
 
         </div>
 
         {{-- ================= CERTIFICATE SECTION ================= --}}
-        <div class="bg-gray-900 p-5 rounded-xl border border-gray-700">
+        <div class="bg-gray-900 p-5 rounded-xl border border-gray-700 overflow-x-auto">
 
             <div class="flex items-center justify-between mb-4">
 
@@ -177,63 +186,68 @@
 
             </div>
 
-            <table class="w-full text-sm text-left text-gray-300">
+            <div class="w-full ">
+                <div class="min-w-[800px]">
+                    <table class="w-full text-sm text-left text-gray-300">
 
-                <thead class="text-gray-400 border-b border-gray-700">
-                    <tr>
-                        <th>Title</th>
-                        <th>Order</th>
-                        <th>Image</th>
-                        <th class="text-right">Action</th>
-                    </tr>
-                </thead>
+                        <thead class="text-gray-400 border-b border-gray-700">
+                            <tr>
+                                <th>Title</th>
+                                <th>Order</th>
+                                <th>Image</th>
+                                <th class="text-right">Action</th>
+                            </tr>
+                        </thead>
 
-                <tbody>
+                        <tbody>
 
-                    @forelse ($certificates as $certificate)
-                        <tr class="border-b border-gray-800">
+                            @forelse ($certificates as $certificate)
+                                <tr class="border-b border-gray-800">
 
-                            <td>{{ $certificate->title }}</td>
-                            <td>{{ $certificate->order }}</td>
+                                    <td>{{ $certificate->title }}</td>
+                                    <td>{{ $certificate->order }}</td>
 
-                            <td>
-                                <img src="{{ asset('storage/' . $certificate->image) }}"
-                                    class="w-20 h-20 object-cover rounded">
-                            </td>
+                                    <td>
+                                        <img src="{{ asset('storage/' . $certificate->image) }}"
+                                            class="w-20 h-20 object-cover rounded">
+                                    </td>
 
-                            <td class="text-right space-x-2">
+                                    <td class="text-right space-x-2">
 
-                                <button @click="opencertificateEdit(@js($certificate))"
-                                    class="px-3 py-1 bg-yellow-500 text-black rounded">
-                                    Edit
-                                </button>
+                                        <button @click="opencertificateEdit(@js($certificate))"
+                                            class="px-3 py-1 bg-yellow-500 text-black rounded">
+                                            Edit
+                                        </button>
 
-                                <form x-data @submit.prevent="confirmDelete($el)"
-                                    action="/admin/certificate/{{ $certificate->id }}" method="POST" class="inline">
+                                        <form x-data @submit.prevent="confirmDelete($el)"
+                                            action="/admin/certificate/{{ $certificate->id }}" method="POST"
+                                            class="inline">
 
-                                    @csrf
-                                    @method('DELETE')
+                                            @csrf
+                                            @method('DELETE')
 
-                                    <button class="px-3 py-1 bg-red-500 text-white rounded">
-                                        Delete
-                                    </button>
+                                            <button class="px-3 py-1 bg-red-500 text-white rounded">
+                                                Delete
+                                            </button>
 
-                                </form>
+                                        </form>
 
-                            </td>
+                                    </td>
 
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="3" class="text-center py-5 text-gray-400">
-                                No certificate found
-                            </td>
-                        </tr>
-                    @endforelse
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="3" class="text-center py-5 text-gray-400">
+                                        No certificate found
+                                    </td>
+                                </tr>
+                            @endforelse
 
-                </tbody>
+                        </tbody>
 
-            </table>
+                    </table>
+                </div>
+            </div>
 
         </div>
 

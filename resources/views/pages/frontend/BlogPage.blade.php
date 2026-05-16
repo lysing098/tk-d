@@ -84,170 +84,192 @@
     {{-- comparison --}}
     <div class="py-20 relative px-4 lg:px-0">
 
-    <!-- SECTION TITLE -->
-    <div class="absolute top-10 md:top-20 left-0 w-2/3 md:w-1/3 overflow-hidden">
+        <!-- SECTION TITLE -->
+        <div class="absolute top-10 md:top-20 left-0 w-2/3 md:w-1/3 overflow-hidden">
 
-        <div class="absolute inset-0 bg-[#ED1C24]
+            <div class="absolute inset-0 bg-[#ED1C24]
         [clip-path:polygon(0_0,100%_0,90%_100%,0_100%)]">
+            </div>
+
+            <div class="relative z-10 px-4 md:px-6 py-3 flex justify-start md:justify-center">
+                <h1 class="text-lg md:text-2xl font-bold text-white capitalize">
+                    Rice Straws vs Paper Straws
+                </h1>
+            </div>
+
         </div>
 
-        <div class="relative z-10 px-4 md:px-6 py-3 flex justify-start md:justify-center">
-            <h1 class="text-lg md:text-2xl font-bold text-white capitalize">
-                Rice Straws vs Paper Straws
-            </h1>
-        </div>
+        <!-- CONTENT -->
+        <div class="my-20 px-2 container mx-auto flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20">
 
+            {{-- LEFT --}}
+            <div class="w-full lg:w-auto">
+
+                <!-- IMAGE -->
+                <div class="relative h-[220px] sm:h-[260px] md:h-[292.87px] overflow-hidden">
+                    <img src="{{ asset('images/herosection.jpg') }}" class="w-full h-full object-cover">
+
+                    <div class="absolute top-0 left-0 w-3/4 h-5">
+                        <div class="w-full h-full bg-[#0B0B54]" style="clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);">
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-0 right-0 w-3/4 h-5">
+                        <div class="w-full h-full bg-[#0B0B54]"
+                            style="clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);"></div>
+                    </div>
+                </div>
+
+                <!-- TABLE -->
+                <div class="mt-5 border-b-8 border-[#0B0B54] w-full max-w-full overflow-x-auto">
+
+                    <table class="w-full min-w-[500px] border-collapse">
+
+                        <thead>
+                            <tr class="bg-[#0B0B54] text-white">
+                                <th class="px-4 md:px-6 py-4 text-left text-sm md:text-lg font-bold">
+                                    Feature
+                                </th>
+                                <th class="px-4 md:px-6 py-4 text-left text-sm md:text-lg font-bold">
+                                    Rice Straws
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="text-[#2B2B2B] font-semibold text-sm md:text-base">
+
+                            <tr class="bg-[#EAEAEA]">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Material</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">Made from rice flour & tapioca starch</td>
+                            </tr>
+
+                            <tr class="bg-white">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Durability</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">Strong and stable for 40–120 minutes</td>
+                            </tr>
+
+                            <tr class="bg-[#EAEAEA]">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Taste Impact</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">No effect on drink flavor</td>
+                            </tr>
+
+                            <tr class="bg-white">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Hot Drinks</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">Maintains structure in hot beverages</td>
+                            </tr>
+
+                            <tr class="bg-[#EAEAEA]">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Cold Drinks</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">Long-lasting performance</td>
+                            </tr>
+
+                            <tr class="bg-white">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Eco-Friendly</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">100% biodegradable and compostable</td>
+                            </tr>
+
+                             <tr class="bg-[#EAEAEA]">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Customer Experience</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">Smooth, pleasant drinking experience</td>
+                            </tr>
+
+                             <tr class="bg-white">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Brand Image</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">Premium, innovative eco-solution</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+
+            {{-- RIGHT --}}
+            <div class="w-full lg:w-auto">
+
+                <div class="relative h-[220px] sm:h-[260px] md:h-[292.87px] overflow-hidden">
+                    <img src="{{ asset('images/herosection.jpg') }}" class="w-full h-full object-cover">
+
+                    <div class="absolute top-0 left-0 w-3/4 h-5">
+                        <div class="w-full h-full bg-[#ED1C24]" style="clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);">
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-0 right-0 w-3/4 h-5">
+                        <div class="w-full h-full bg-[#ED1C24]"
+                            style="clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);"></div>
+                    </div>
+                </div>
+
+                <div class="mt-5 border-b-8 border-[#ED1C24] w-full max-w-full overflow-x-auto">
+
+                    <table class="w-full min-w-[500px] border-collapse">
+
+                        <thead>
+                            <tr class="bg-[#ED1C24] text-white">
+                                <th class="px-4 md:px-6 py-4 text-left text-sm md:text-lg font-bold">
+                                    Feature
+                                </th>
+                                <th class="px-4 md:px-6 py-4 text-left text-sm md:text-lg font-bold">
+                                    Rice Straws
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="text-[#2B2B2B] font-semibold text-sm md:text-base">
+
+                            <tr class="bg-[#EAEAEA]">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Material</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">Made from paper pulp</td>
+                            </tr>
+
+                            <tr class="bg-white">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Durability</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">Becomes soggy quickly (10–30 minutes)
+
+                                </td>
+                            </tr>
+
+                            <tr class="bg-[#EAEAEA]">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Taste Impact</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">May affect taste after soaking</td>
+                            </tr>
+
+                            <tr class="bg-white">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Hot Drinks</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">Softens and breaks down faster</td>
+                            </tr>
+
+                            <tr class="bg-[#EAEAEA]">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Cold Drinks</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">Weakens over time</td>
+                            </tr>
+
+                            <tr class="bg-white">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Eco-Friendly</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">Biodegradable but often chemically processed</td>
+                            </tr>
+
+                            <tr class="bg-[#EAEAEA]">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Customer Experience</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">Can feel soft and unpleasant</td>
+                            </tr>
+
+                            <tr class="bg-white">
+                                <td class="px-4 md:px-6 py-5 md:py-8">Brand ImageBrand Image</td>
+                                <td class="px-4 md:px-6 py-5 md:py-8">Common but less durable option</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
     </div>
-
-    <!-- CONTENT -->
-    <div class="my-20 container mx-auto flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20">
-
-        {{-- LEFT --}}
-        <div class="w-full lg:w-auto">
-
-            <!-- IMAGE -->
-            <div class="relative h-[220px] sm:h-[260px] md:h-[292.87px] overflow-hidden">
-                <img src="{{ asset('images/herosection.jpg') }}" class="w-full h-full object-cover">
-
-                <div class="absolute top-0 left-0 w-3/4 h-5">
-                    <div class="w-full h-full bg-[#0B0B54]"
-                         style="clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);"></div>
-                </div>
-
-                <div class="absolute bottom-0 right-0 w-3/4 h-5">
-                    <div class="w-full h-full bg-[#0B0B54]"
-                         style="clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);"></div>
-                </div>
-            </div>
-
-            <!-- TABLE -->
-            <div class="mt-5 border-b-8 border-[#0B0B54] w-full max-w-full overflow-x-auto">
-
-                <table class="w-full min-w-[500px] border-collapse">
-
-                    <thead>
-                        <tr class="bg-[#0B0B54] text-white">
-                            <th class="px-4 md:px-6 py-4 text-left text-sm md:text-lg font-bold">
-                                Feature
-                            </th>
-                            <th class="px-4 md:px-6 py-4 text-left text-sm md:text-lg font-bold">
-                                Rice Straws
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody class="text-[#2B2B2B] font-semibold text-sm md:text-base">
-
-                        <tr class="bg-[#EAEAEA]">
-                            <td class="px-4 md:px-6 py-5 md:py-8">Material</td>
-                            <td class="px-4 md:px-6 py-5 md:py-8">Made from rice flour & tapioca starch</td>
-                        </tr>
-
-                        <tr class="bg-white">
-                            <td class="px-4 md:px-6 py-5 md:py-8">Durability</td>
-                            <td class="px-4 md:px-6 py-5 md:py-8">Strong and stable for 40–120 minutes</td>
-                        </tr>
-
-                        <tr class="bg-[#EAEAEA]">
-                            <td class="px-4 md:px-6 py-5 md:py-8">Taste Impact</td>
-                            <td class="px-4 md:px-6 py-5 md:py-8">No effect on drink flavor</td>
-                        </tr>
-
-                        <tr class="bg-white">
-                            <td class="px-4 md:px-6 py-5 md:py-8">Hot Drinks</td>
-                            <td class="px-4 md:px-6 py-5 md:py-8">Maintains structure in hot beverages</td>
-                        </tr>
-
-                        <tr class="bg-[#EAEAEA]">
-                            <td class="px-4 md:px-6 py-5 md:py-8">Cold Drinks</td>
-                            <td class="px-4 md:px-6 py-5 md:py-8">Long-lasting performance</td>
-                        </tr>
-
-                        <tr class="bg-white">
-                            <td class="px-4 md:px-6 py-5 md:py-8">Eco-Friendly</td>
-                            <td class="px-4 md:px-6 py-5 md:py-8">100% biodegradable and compostable</td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-            </div>
-
-        </div>
-
-        {{-- RIGHT --}}
-        <div class="w-full lg:w-auto">
-
-            <div class="relative h-[220px] sm:h-[260px] md:h-[292.87px] overflow-hidden">
-                <img src="{{ asset('images/herosection.jpg') }}" class="w-full h-full object-cover">
-
-                <div class="absolute top-0 left-0 w-3/4 h-5">
-                    <div class="w-full h-full bg-[#ED1C24]"
-                         style="clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);"></div>
-                </div>
-
-                <div class="absolute bottom-0 right-0 w-3/4 h-5">
-                    <div class="w-full h-full bg-[#ED1C24]"
-                         style="clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);"></div>
-                </div>
-            </div>
-
-            <div class="mt-5 border-b-8 border-[#ED1C24] w-full max-w-full overflow-x-auto">
-
-                <table class="w-full min-w-[500px] border-collapse">
-
-                    <thead>
-                        <tr class="bg-[#ED1C24] text-white">
-                            <th class="px-4 md:px-6 py-4 text-left text-sm md:text-lg font-bold">
-                                Feature
-                            </th>
-                            <th class="px-4 md:px-6 py-4 text-left text-sm md:text-lg font-bold">
-                                Rice Straws
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody class="text-[#2B2B2B] font-semibold text-sm md:text-base">
-
-                        <tr class="bg-[#EAEAEA]">
-                            <td class="px-4 md:px-6 py-5 md:py-8">Material</td>
-                            <td class="px-4 md:px-6 py-5 md:py-8">Made from rice flour & tapioca starch</td>
-                        </tr>
-
-                        <tr class="bg-white">
-                            <td class="px-4 md:px-6 py-5 md:py-8">Durability</td>
-                            <td class="px-4 md:px-6 py-5 md:py-8">Strong and stable for 40–120 minutes</td>
-                        </tr>
-
-                        <tr class="bg-[#EAEAEA]">
-                            <td class="px-4 md:px-6 py-5 md:py-8">Taste Impact</td>
-                            <td class="px-4 md:px-6 py-5 md:py-8">No effect on drink flavor</td>
-                        </tr>
-
-                        <tr class="bg-white">
-                            <td class="px-4 md:px-6 py-5 md:py-8">Hot Drinks</td>
-                            <td class="px-4 md:px-6 py-5 md:py-8">Maintains structure in hot beverages</td>
-                        </tr>
-
-                        <tr class="bg-[#EAEAEA]">
-                            <td class="px-4 md:px-6 py-5 md:py-8">Cold Drinks</td>
-                            <td class="px-4 md:px-6 py-5 md:py-8">Long-lasting performance</td>
-                        </tr>
-
-                        <tr class="bg-white">
-                            <td class="px-4 md:px-6 py-5 md:py-8">Eco-Friendly</td>
-                            <td class="px-4 md:px-6 py-5 md:py-8">100% biodegradable and compostable</td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-            </div>
-
-        </div>
-
-    </div>
-</div>
 
     <!-- CTA SECTION -->
     <div class="relative text-white py-20 text-center overflow-hidden"

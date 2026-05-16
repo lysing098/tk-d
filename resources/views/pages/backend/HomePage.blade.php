@@ -1,7 +1,7 @@
 @extends('layouts.Backend.MainLayout')
 
 @section('content')
-    <div x-data="adminModal()" class="p-6 space-y-10">
+    <div x-data="adminModal()" class="p-6 space-y-10 ">
 
         {{-- HEADER --}}
         <div class="flex items-center justify-between">
@@ -25,7 +25,7 @@
         </form>
 
         {{-- ================= HERO SECTION ================= --}}
-        <div class="bg-gray-900 p-5 rounded-xl border border-gray-700">
+        <div class="bg-gray-900 p-5 rounded-xl border border-gray-700 overflow-auto">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-lg text-white">Hero Section</h2>
                 {{-- <button @click="openHeroCreate()" class="px-4 py-2 bg-green-500 text-white rounded-lg">
@@ -83,7 +83,7 @@
         </div>
 
         {{-- ================= FAQ ================= --}}
-        <div class="bg-gray-900 p-5 rounded-xl border border-gray-700">
+        <div class="bg-gray-900 p-5 rounded-xl border border-gray-700 overflow-auto">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-lg text-white">FAQ</h2>
                 <button @click="openFaqCreate()" class="px-4 py-2 bg-green-500 text-white rounded-lg">

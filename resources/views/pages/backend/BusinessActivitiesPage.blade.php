@@ -28,7 +28,8 @@
 
         </div>
 
-        <table class="w-full text-sm text-left text-gray-300">
+        <div class="w-full overflow-x-auto">
+    <table class="min-w-[900px] w-full text-sm text-left text-gray-300">
 
             <thead class="text-gray-400 border-b border-gray-700">
 
@@ -99,7 +100,8 @@
 
             </tbody>
 
-        </table>
+            </table>
+</div>
 
     </div>
 

@@ -1,7 +1,7 @@
 @extends('layouts.frontend.MainLayout')
 
 @section('content')
-     {{-- hero section --}}
+    {{-- hero section --}}
     <div class="h-[93vh] bg-cover bg-center text-white relative"
         style="background-image: url('{{ asset('storage/' . $hero->background_image) }}');">
 
@@ -18,17 +18,17 @@
                 class="relative z-10 px-5 md:pl-15 lg:pl-20 2xl:px-40 py-4 md:py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-sm md:text-base">
 
                 <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-phone "></i>
+                    <i class="fa-solid fa-phone"></i>
                     <p class="break-all">{{ $company->tel }}</p>
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-envelope "></i>
+                    <i class="fa-solid fa-envelope"></i>
                     <p class="break-all">{{ $company->email }}</p>
                 </div>
 
                 <div class="flex items-center gap-2 text-center md:text-left">
-                    <i class="fa-solid fa-bullhorn "></i>
+                    <i class="fa-solid fa-bullhorn"></i>
                     <p class="text-xs md:text-sm lg:text-base">
                         {{ $company->description }}
                     </p>
@@ -61,7 +61,7 @@
                 <!-- Buttons -->
                 <div class="flex flex-col sm:flex-row gap-3 w-full">
                     @if ($hero->btn_primary_text)
-                        <a href={{ $hero->btn_primary_link }}
+                        <a href="{{ $hero->btn_primary_link }}"
                             class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
                           bg-white text-[#ED1C24] font-semibold text-center capitalize">
                             {{ $hero->btn_primary_text }}
@@ -69,7 +69,7 @@
                     @endif
 
                     @if ($hero->btn_secondary_text)
-                        <a href={{ $hero->btn_secondary_link }}
+                        <a href="{{ $hero->btn_secondary_link }}"
                             class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
                           bg-white text-[#ED1C24] font-semibold text-center capitalize">
                             {{ $hero->btn_secondary_text }}
@@ -116,8 +116,9 @@
                                 <i class="fa-solid fa-envelope text-[#ED1C24] mt-1"></i>
                                 <div>
                                     <p class="text-gray-500">Email</p>
-                                    <a href="mailto:tkd.manufacturing89@gmail.com" class="text-[#ED1C24] font-medium">
-                                        tkd.manufacturing89@gmail.com
+                                    <a href="mailto:{{ $company->email }}"
+                                        class="text-[#ED1C24] font-medium">
+                                        {{ $company->email }}
                                     </a>
                                 </div>
                             </div>
@@ -127,8 +128,9 @@
                                 <i class="fa-solid fa-phone text-[#ED1C24] mt-1"></i>
                                 <div>
                                     <p class="text-gray-500">Phone</p>
-                                    <a href="tel:+85512590666" class="text-[#ED1C24] font-medium">
-                                        +855 12 590 666
+                                    <a href="tel:{{ $company->tel }}"
+                                        class="text-[#ED1C24] font-medium">
+                                        {{ $company->tel }}
                                     </a>
                                 </div>
                             </div>
@@ -139,7 +141,7 @@
                                 <div>
                                     <p class="text-gray-500">Location</p>
                                     <p class="font-medium text-gray-800">
-                                        Pursat Province, Cambodia
+                                        {{ $company->location }}
                                     </p>
                                 </div>
                             </div>
@@ -147,21 +149,17 @@
                         </div>
                     </div>
 
-                    <!-- MANUFACTURING MAP -->
-                    <div class="bg-white rounded-xl overflow-hidden shadow-sm border">
-                        <div class="p-4 border-b font-semibold text-[#0B0B54]">
-                            Manufacturing Location
-                        </div>
-                        <iframe src="https://maps.google.com/maps?q=Cambodia&t=k&z=5&output=embed" class="w-full h-56">
-                        </iframe>
-                    </div>
+
 
                     <!-- OFFICE MAP -->
                     <div class="bg-white rounded-xl overflow-hidden shadow-sm border">
                         <div class="p-4 border-b font-semibold text-[#0B0B54]">
                             Office Location
                         </div>
-                        <iframe src="https://maps.google.com/maps?q=Cambodia&t=k&z=5&output=embed" class="w-full h-56">
+
+                        <iframe
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1947.403888714006!2d104.00688138437803!3d12.52888975386584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310fa5e9bfa7bdd3%3A0x7dc60c94e465695d!2sTK%26D%20Manufacturing!5e0!3m2!1sen!2skh!4v1778837513476!5m2!1sen!2skh" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            class="w-full h-56">
                         </iframe>
                     </div>
 
@@ -174,82 +172,194 @@
                         Request Quotation
                     </h3>
 
-                    <form action="mailto:tkd.manufacturing89@gmail.com" method="POST" enctype="text/plain"
+                    {{-- SUCCESS MESSAGE --}}
+                    @if (session('success'))
+                        <div class="mb-5 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <form action="{{ route('contact.store') }}"
+                        method="POST"
                         class="grid md:grid-cols-2 gap-4">
 
-                        <input type="text" name="full_name" placeholder="Full Name"
-                            class="border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] outline-none">
+                        @csrf
 
-                        <input type="text" name="company" placeholder="Company Name"
-                            class="border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] outline-none">
+                        {{-- FULL NAME --}}
+                        <div>
+                            <input type="text"
+                                name="fullname"
+                                placeholder="Full Name"
+                                value="{{ old('fullname') }}"
+                                required
+                                class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] outline-none">
 
-                        <!-- COUNTRY (ALL COUNTRIES) -->
-                        <select name="country"
-                            class="border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] md:col-span-2">
+                            @error('fullname')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-                            <option>Select Country</option>
-                            <option>Afghanistan</option>
-                            <option>Albania</option>
-                            <option>Algeria</option>
-                            <option>Andorra</option>
-                            <option>Angola</option>
-                            <option>Argentina</option>
-                            <option>Australia</option>
-                            <option>Austria</option>
-                            <option>Bangladesh</option>
-                            <option>Belgium</option>
-                            <option>Brazil</option>
-                            <option>Canada</option>
-                            <option>China</option>
-                            <option>Cambodia</option>
-                            <option>Denmark</option>
-                            <option>Egypt</option>
-                            <option>France</option>
-                            <option>Germany</option>
-                            <option>India</option>
-                            <option>Indonesia</option>
-                            <option>Italy</option>
-                            <option>Japan</option>
-                            <option>South Korea</option>
-                            <option>Laos</option>
-                            <option>Malaysia</option>
-                            <option>Mexico</option>
-                            <option>Netherlands</option>
-                            <option>New Zealand</option>
-                            <option>Norway</option>
-                            <option>Philippines</option>
-                            <option>Portugal</option>
-                            <option>Russia</option>
-                            <option>Saudi Arabia</option>
-                            <option>Singapore</option>
-                            <option>Spain</option>
-                            <option>Sweden</option>
-                            <option>Switzerland</option>
-                            <option>Thailand</option>
-                            <option>United Kingdom</option>
-                            <option>United States</option>
-                            <option>Vietnam</option>
-                            <!-- you can expand more if needed -->
-                        </select>
+                        {{-- COMPANY --}}
+                        <div>
+                            <input type="text"
+                                name="company"
+                                placeholder="Company Name"
+                                value="{{ old('company') }}"
+                                required
+                                class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] outline-none">
 
-                        <input type="email" name="email" placeholder="Email"
-                            class="border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] outline-none">
+                            @error('company')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-                        <input type="text" name="whatsapp" placeholder="WhatsApp"
-                            class="border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] outline-none">
+                        {{-- COUNTRY --}}
+                        <div class="md:col-span-2">
+                            <select name="country"
+                                required
+                                class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] outline-none">
 
-                        <select name="product"
-                            class="border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] md:col-span-2">
+                                <option value="">Select Country</option>
 
-                            <option>Product Inquiry</option>
-                            <option>Rice-Flour Straws</option>
-                            <option>Paper Cups & Bowls</option>
-                            <option>Recycled Plastic Cups</option>
-                        </select>
+                                @php
+                                    $countries = [
+                                        'Afghanistan',
+                                        'Albania',
+                                        'Algeria',
+                                        'Andorra',
+                                        'Angola',
+                                        'Argentina',
+                                        'Australia',
+                                        'Austria',
+                                        'Bangladesh',
+                                        'Belgium',
+                                        'Brazil',
+                                        'Cambodia',
+                                        'Canada',
+                                        'China',
+                                        'Denmark',
+                                        'Egypt',
+                                        'France',
+                                        'Germany',
+                                        'India',
+                                        'Indonesia',
+                                        'Italy',
+                                        'Japan',
+                                        'South Korea',
+                                        'Laos',
+                                        'Malaysia',
+                                        'Mexico',
+                                        'Netherlands',
+                                        'New Zealand',
+                                        'Norway',
+                                        'Philippines',
+                                        'Portugal',
+                                        'Russia',
+                                        'Saudi Arabia',
+                                        'Singapore',
+                                        'Spain',
+                                        'Sweden',
+                                        'Switzerland',
+                                        'Thailand',
+                                        'United Kingdom',
+                                        'United States',
+                                        'Vietnam',
+                                    ];
+                                @endphp
 
-                        <input type="number" name="quantity" placeholder="Quantity"
-                            class="border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] md:col-span-2">
+                                @foreach ($countries as $country)
+                                    <option value="{{ $country }}"
+                                        {{ old('country') == $country ? 'selected' : '' }}>
+                                        {{ $country }}
+                                    </option>
+                                @endforeach
 
+                            </select>
+
+                            @error('country')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        {{-- EMAIL --}}
+                        <div>
+                            <input type="email"
+                                name="email"
+                                placeholder="Email"
+                                value="{{ old('email') }}"
+                                required
+                                class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] outline-none">
+
+                            @error('email')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        {{-- WHATSAPP --}}
+                        <div>
+                            <input type="text"
+                                name="whatsapp"
+                                placeholder="WhatsApp"
+                                value="{{ old('whatsapp') }}"
+                                class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] outline-none">
+
+                            @error('whatsapp')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        {{-- PRODUCT --}}
+                        <div class="md:col-span-2">
+                            <select name="product"
+                                class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] outline-none">
+
+                                <option value="">Product Inquiry</option>
+
+                                <option value="Rice-Flour Straws"
+                                    {{ old('product') == 'Rice-Flour Straws' ? 'selected' : '' }}>
+                                    Rice-Flour Straws
+                                </option>
+
+                                <option value="Paper Cups & Bowls"
+                                    {{ old('product') == 'Paper Cups & Bowls' ? 'selected' : '' }}>
+                                    Paper Cups & Bowls
+                                </option>
+
+                                <option value="Recycled Plastic Cups"
+                                    {{ old('product') == 'Recycled Plastic Cups' ? 'selected' : '' }}>
+                                    Recycled Plastic Cups
+                                </option>
+
+                            </select>
+                        </div>
+
+                        {{-- QUANTITY --}}
+                        <div class="md:col-span-2">
+                            <input type="number"
+                                name="qty"
+                                placeholder="Quantity"
+                                value="{{ old('qty') }}"
+                                required
+                                class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] outline-none">
+
+                            @error('qty')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        {{-- MESSAGE --}}
+                        <div class="md:col-span-2">
+                            <textarea name="message"
+                                rows="5"
+                                placeholder="Your Message"
+                                class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-[#ED1C24] outline-none resize-none">{{ old('message') }}</textarea>
+
+                            @error('message')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        {{-- SUBMIT --}}
                         <button type="submit"
                             class="md:col-span-2 bg-[#ED1C24] text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition">
                             🚀 Request Quotation

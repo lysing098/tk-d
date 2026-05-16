@@ -24,58 +24,62 @@
         </div>
 
         {{-- TABLE --}}
+
+
         <div class="bg-gray-900 p-5 rounded-xl border border-gray-700">
-
-            <table class="w-full text-sm text-gray-300">
-                <thead class="border-b border-gray-700 text-gray-400">
-                    <tr>
-                        <th class="py-2 text-left">Title</th>
-                        <th class="py-2 text-left">Email</th>
-                        <th class="py-2 text-left">Tel</th>
-                        <th class="py-2 text-left">Description</th>
-                        <th class="py-2 text-left">Location</th>
-                        <th class="py-2 text-left">Facebook</th>
-                        <th class="py-2 text-left">Telegram</th>
-                        <th class="py-2 text-left">Whatsapp</th>
-                        <th class="py-2 text-left">Instagram</th>
-                        <th class="py-2 text-right">Action</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @if ($company)
-                        <tr class="border-b border-gray-800">
-                            <td>{{ Str::limit($company->title, 30) }}</td>
-                            <td class="py-2">{{ $company->email }}</td>
-                            <td class="py-2">{{ $company->tel }}</td>
-                            <td>{{ Str::limit($company->description, 20) }}</td>
-                            <td class="py-2">{{ $company->location }}</td>
-                            <td class="py-2">{{ $company->facebook }}</td>
-                            <td class="py-2">{{ $company->telegram }}</td>
-                            <td class="py-2">{{ $company->whatsapp }}</td>
-                            <td class="py-2">{{ $company->instagram }}</td>
-
-                            <td class="py-2 text-right space-x-2">
-                                <button @click='openEdit(@json($company))'
-                                    class="px-3 py-1 bg-yellow-500 text-black rounded">
-                                    Edit
-                                </button>
-
-                                <button @click="deleteCompany({{ $company->id }})"
-                                    class="px-3 py-1 bg-red-500 text-white rounded">
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    @else
+            <div class="w-full overflow-x-auto">
+                <table class="min-w-[1200px] w-full text-sm text-gray-300">
+                    <thead class="border-b border-gray-700 text-gray-400">
                         <tr>
-                            <td colspan="5" class="text-center py-5 text-gray-400">
-                                No company found
-                            </td>
+                            <th class="py-2 text-left">Title</th>
+                            <th class="py-2 text-left">Email</th>
+                            <th class="py-2 text-left">Tel</th>
+                            <th class="py-2 text-left">Description</th>
+                            <th class="py-2 text-left">Location</th>
+                            <th class="py-2 text-left">Facebook</th>
+                            <th class="py-2 text-left">Telegram</th>
+                            <th class="py-2 text-left">Whatsapp</th>
+                            <th class="py-2 text-left">Instagram</th>
+                            <th class="py-2 text-right">Action</th>
                         </tr>
-                    @endif
-                </tbody>
-            </table>
+                    </thead>
+
+                    <tbody>
+                        @if ($company)
+                            <tr class="border-b border-gray-800">
+                                <td>{{ Str::limit($company->title, 30) }}</td>
+                                <td class="py-2">{{ $company->email }}</td>
+                                <td class="py-2">{{ $company->tel }}</td>
+                                <td>{{ Str::limit($company->description, 20) }}</td>
+                                <td class="py-2">{{ $company->location }}</td>
+                                <td class="py-2">{{ $company->facebook }}</td>
+                                <td class="py-2">{{ $company->telegram }}</td>
+                                <td class="py-2">{{ $company->whatsapp }}</td>
+                                <td class="py-2">{{ $company->instagram }}</td>
+
+                                <td class="py-2 text-right space-x-2">
+                                    <button @click='openEdit(@json($company))'
+                                        class="px-3 py-1 bg-yellow-500 text-black rounded">
+                                        Edit
+                                    </button>
+
+                                    <button @click="deleteCompany({{ $company->id }})"
+                                        class="px-3 py-1 bg-red-500 text-white rounded">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        @else
+                            <tr>
+                                <td colspan="5" class="text-center py-5 text-gray-400">
+                                    No company found
+                                </td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+
 
         </div>
 
@@ -188,21 +192,21 @@
                 // ================= RESET =================
                 reset() {
 
-    this.errors = {};
+                    this.errors = {};
 
-    this.form = {
-        title: '',
-        description: '',
-        email: '',
-        tel: '',
-        location: '',
-        facebook: '',
-        telegram: '',
-        whatsapp: '',
-        instagram: ''
-    };
+                    this.form = {
+                        title: '',
+                        description: '',
+                        email: '',
+                        tel: '',
+                        location: '',
+                        facebook: '',
+                        telegram: '',
+                        whatsapp: '',
+                        instagram: ''
+                    };
 
-},
+                },
 
                 // ================= SUBMIT =================
                 async submitForm() {
@@ -221,16 +225,16 @@
 
                     const fd = new FormData();
 
-fd.append('title', this.form.title);
-fd.append('description', this.form.description);
-fd.append('email', this.form.email);
-fd.append('tel', this.form.tel);
-fd.append('location', this.form.location);
+                    fd.append('title', this.form.title);
+                    fd.append('description', this.form.description);
+                    fd.append('email', this.form.email);
+                    fd.append('tel', this.form.tel);
+                    fd.append('location', this.form.location);
 
-fd.append('facebook', this.form.facebook);
-fd.append('telegram', this.form.telegram);
-fd.append('whatsapp', this.form.whatsapp);
-fd.append('instagram', this.form.instagram);
+                    fd.append('facebook', this.form.facebook);
+                    fd.append('telegram', this.form.telegram);
+                    fd.append('whatsapp', this.form.whatsapp);
+                    fd.append('instagram', this.form.instagram);
 
                     fd.append('_token',
                         document.querySelector('meta[name="csrf-token"]').content
